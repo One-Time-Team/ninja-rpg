@@ -1,1 +1,1 @@
-# ninja-rpg
+# NINJA RPG
