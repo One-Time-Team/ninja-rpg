@@ -1,8 +1,8 @@
 ﻿using System;
-using Core.Enums;
+using StatsSystem.Enums;
 using UnityEngine;
 
-namespace StatsSystem
+namespace StatsSystem.Data
 {
     [Serializable]
     public class StatModificator
@@ -20,6 +20,14 @@ namespace StatsSystem
             Type = type;
             Duration = duration;
             StartTime = startTime;
+        }
+
+        public StatModificator GetReversed()
+        {
+            var reversedStat = new Stat(Stat.Type, Type == StatModificatorType.Additive 
+                ? -Stat 
+                : 1 / Stat);
+            return new StatModificator(reversedStat, Type, Duration, Time.time);
         }
     }
 }

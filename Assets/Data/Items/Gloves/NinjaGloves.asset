@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b0bf3e75bc248179a228a7b5fe34d24, type: 3}
+  m_Name: NinjaGloves
+  m_EditorClassIdentifier: 
+  _statChangingItemDescriptor:
+    <Id>k__BackingField: 9
+    <ItemType>k__BackingField: 2
+    <Sprite>k__BackingField: {fileID: 0}
+    <Rarity>k__BackingField: 2
+    <Price>k__BackingField: 40
+    <StatChangingLevel>k__BackingField: 0
+    <Stats>k__BackingField:
+    - <Stat>k__BackingField:
+        <Type>k__BackingField: 3
+        <Value>k__BackingField: 1.2
+      <Type>k__BackingField: 1
+      <Duration>k__BackingField: -1

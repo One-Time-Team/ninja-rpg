@@ -1,6 +1,6 @@
-﻿using Core.Enums;
+﻿using StatsSystem.Enums;
 
-namespace StatsSystem
+namespace StatsSystem.Data
 {
     public interface IStatValueGiver
     {

@@ -13,6 +13,8 @@ namespace StaticCameras
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (!other.transform.CompareTag("Player")) return;
+            
             _parallax.enabled = false;
             
             foreach (Transform staticCamera in transform)
@@ -31,6 +33,8 @@ namespace StaticCameras
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            if (!other.transform.CompareTag("Player")) return;
+            
             _parallax.enabled = true;
             
             foreach (Transform staticCamera in transform)

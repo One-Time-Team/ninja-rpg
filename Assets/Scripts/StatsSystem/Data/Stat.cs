@@ -1,8 +1,8 @@
 ﻿using System;
-using Core.Enums;
+using StatsSystem.Enums;
 using UnityEngine;
 
-namespace StatsSystem
+namespace StatsSystem.Data
 {
     [Serializable]
     public class Stat
@@ -17,7 +17,12 @@ namespace StatsSystem
             Value = value;
         }
 
-        public static implicit operator float(Stat stat) => stat?.Value ?? 0;
+        public static implicit operator float(Stat stat)
+        {
+            if (stat == null) return Mathf.Epsilon;
+            
+            return stat.Value == 0 ? Mathf.Epsilon : stat.Value;
+        }
 
         public void SetValue(float value) => Value = value;
 
