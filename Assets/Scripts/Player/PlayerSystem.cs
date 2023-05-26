@@ -12,8 +12,9 @@ namespace Player
     {
         private readonly PlayerEntityHandler _player;
         private readonly PlayerBrain _playerBrain;
-        private readonly StatsController _statsController;
         private readonly List<IDisposable> _disposables;
+
+        public StatsController _statsController { get; }
 
         public PlayerSystem(PlayerEntityHandler player, List<IEntityInputSource> inputSources)
         {
