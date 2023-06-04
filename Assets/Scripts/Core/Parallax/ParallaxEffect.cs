@@ -17,9 +17,9 @@ namespace Core.Parallax
 
         private void OnEnable()
         {
-            if (_target != null)
+            if (_target.TryGetComponent(out PlayerEntityHandler player))
             {
-                var speed = _target.GetComponent<PlayerEntityHandler>().StatGiver.GetStat(StatType.Speed);
+                var speed = player.StatGiver.GetStat(StatType.Speed);
                 speed.SetValue(speed / TargetSpeedCoef);
             }
             _previousTargetPosition = _target.transform.position.x;
@@ -41,9 +41,9 @@ namespace Core.Parallax
 
         private void OnDisable()
         {
-            if (_target == null) return;
+            if (_target == null || !_target.TryGetComponent(out PlayerEntityHandler player)) return;
             
-            var speed = _target.GetComponent<PlayerEntityHandler>().StatGiver.GetStat(StatType.Speed);
+            var speed = player.StatGiver.GetStat(StatType.Speed);
             speed.SetValue(speed * TargetSpeedCoef);
         }
     }

@@ -15,13 +15,13 @@ MonoBehaviour:
   _statChangingItemDescriptor:
     <Id>k__BackingField: 13
     <ItemType>k__BackingField: 1
-    <Sprite>k__BackingField: {fileID: 0}
-    <Rarity>k__BackingField: 2
-    <Price>k__BackingField: 40
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 1669842ae3fcdf046b5e198ff2f0dbda, type: 3}
+    <Rarity>k__BackingField: 1
+    <Price>k__BackingField: 20
     <StatChangingLevel>k__BackingField: 0
     <Stats>k__BackingField:
     - <Stat>k__BackingField:
         <Type>k__BackingField: 1
-        <Value>k__BackingField: 20
+        <Value>k__BackingField: 10
       <Type>k__BackingField: 0
       <Duration>k__BackingField: -1

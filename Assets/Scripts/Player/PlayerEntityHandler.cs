@@ -2,7 +2,6 @@ using Core.Animations;
 using Core.Enums;
 using Core.Movement.Controllers;
 using Core.Tools;
-using StatsSystem;
 using StatsSystem.Data;
 using UnityEngine;
 

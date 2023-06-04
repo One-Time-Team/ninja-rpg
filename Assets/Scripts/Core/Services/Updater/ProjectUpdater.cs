@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core.Services.Updater
 {
@@ -8,6 +9,8 @@ namespace Core.Services.Updater
         public static IProjectUpdater Instance;
         
         private bool _isPaused;
+        private Button[] _buttons;
+        private Joystick _joystick;
         
         public event Action UpdateCalled;
         public event Action FixedUpdateCalled;
@@ -24,6 +27,12 @@ namespace Core.Services.Updater
 
                 Time.timeScale = value ? 0 : 1;
                 _isPaused = value;
+
+                _joystick.enabled = !_joystick.enabled;
+                foreach (Button button in _buttons)
+                {
+                    button.interactable = !button.interactable;
+                }
             }
         }
 
@@ -34,6 +43,9 @@ namespace Core.Services.Updater
                 Instance = this;
             else
                 Destroy(gameObject);
+            
+            _buttons = FindObjectsOfType<Button>();
+            _joystick = FindObjectOfType<FixedJoystick>();
         }
 
         private void Update()

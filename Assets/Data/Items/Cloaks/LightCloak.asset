@@ -15,7 +15,7 @@ MonoBehaviour:
   _statChangingItemDescriptor:
     <Id>k__BackingField: 14
     <ItemType>k__BackingField: 1
-    <Sprite>k__BackingField: {fileID: 0}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: b0c4e5dbf2d712d408510768d53ecb36, type: 3}
     <Rarity>k__BackingField: 3
     <Price>k__BackingField: 80
     <StatChangingLevel>k__BackingField: 0

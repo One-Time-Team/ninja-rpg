@@ -4,7 +4,7 @@ using ItemsSystem.Data;
 using ItemsSystem.Enums;
 using StatsSystem;
 
-namespace Assets.Scripts.ItemsSystem
+namespace ItemsSystem
 {
     public class ItemsFactory
     {

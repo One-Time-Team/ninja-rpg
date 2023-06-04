@@ -241,6 +241,7 @@ MonoBehaviour:
   _joystick: {fileID: 679728980}
   _jumpButton: {fileID: 425124387}
   _attackButton: {fileID: 1062930124}
+  <InteractButton>k__BackingField: {fileID: 1033555631}
 --- !u!1 &108721715
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +344,7 @@ GameObject:
   - component: {fileID: 227954498}
   - component: {fileID: 227954500}
   - component: {fileID: 227954499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer3_SandObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1890,7 +1891,7 @@ GameObject:
   - component: {fileID: 385744524}
   - component: {fileID: 385744526}
   - component: {fileID: 385744525}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer6_BehindPyramids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2460,7 +2461,7 @@ GameObject:
   - component: {fileID: 435282407}
   - component: {fileID: 435282409}
   - component: {fileID: 435282408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer8_RemotePyramids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3036,7 +3037,7 @@ GameObject:
   - component: {fileID: 628508562}
   - component: {fileID: 628508561}
   - component: {fileID: 628508563}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer1_Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8452,7 +8453,7 @@ GameObject:
   - component: {fileID: 881465054}
   - component: {fileID: 881465056}
   - component: {fileID: 881465055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer7_Rocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9010,11 +9011,14 @@ MonoBehaviour:
       <MainCamera>k__BackingField: {fileID: 519420031}
     _levelLeftBorder: {fileID: 174666064}
     _levelRightBorder: {fileID: 904296739}
-  _player: {fileID: 1404122219}
+  _playerEntity: {fileID: 1404122219}
   _gameUIInputView: {fileID: 32596157}
   _itemRarityStorage: {fileID: 11400000, guid: a0effcd68fecae947b91eee88857c584, type: 2}
   _itemsStorage: {fileID: 11400000, guid: 68a9ab24f498f474497c98aacd849009, type: 2}
   _parallaxEffect: {fileID: 1970673423}
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &968923591
 Transform:
   m_ObjectHideFlags: 0
@@ -9272,6 +9276,127 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1033555630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1033555634}
+  - component: {fileID: 1033555633}
+  - component: {fileID: 1033555632}
+  - component: {fileID: 1033555631}
+  m_Layer: 5
+  m_Name: Interact Button
+  m_TagString: InteractButton
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1033555631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033555630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1033555632}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1033555632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033555630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.87058824, g: 0.8862745, b: 0.8117647, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 114ab9a327ec2d54ea6cc8e17bb625e4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1033555633
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033555630}
+  m_CullTransparentMesh: 1
+--- !u!224 &1033555634
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033555630}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1797851201}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -163, y: 499}
+  m_SizeDelta: {x: 200, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1062930120
 GameObject:
   m_ObjectHideFlags: 0
@@ -9478,9 +9603,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 19
+  m_SortingLayerID: -541775463
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1552076767, guid: c19c845c575d1b94e975a48f5e84e519, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -9681,7 +9806,7 @@ GameObject:
   - component: {fileID: 1404274119}
   - component: {fileID: 1404274121}
   - component: {fileID: 1404274120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer9_Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10372,7 +10497,7 @@ GameObject:
   - component: {fileID: 1501384256}
   - component: {fileID: 1501384258}
   - component: {fileID: 1501384257}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer10_Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10650,7 +10775,7 @@ GameObject:
   - component: {fileID: 1634029007}
   - component: {fileID: 1634029009}
   - component: {fileID: 1634029008}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer5_Pyramids
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11141,7 +11266,7 @@ GameObject:
   - component: {fileID: 1689049024}
   - component: {fileID: 1689049026}
   - component: {fileID: 1689049025}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer2_Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11702,13 +11827,14 @@ RectTransform:
   m_Children:
   - {fileID: 1062930121}
   - {fileID: 425124384}
+  - {fileID: 1033555634}
   m_Father: {fileID: 32596156}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -337.31982, y: 174.79242}
-  m_SizeDelta: {x: 674.6397, y: 349.5849}
+  m_AnchoredPosition: {x: -337.31982, y: 305.1752}
+  m_SizeDelta: {x: 674.6397, y: 610.3505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1970673420
 GameObject:
@@ -11721,7 +11847,7 @@ GameObject:
   - component: {fileID: 1970673422}
   - component: {fileID: 1970673421}
   - component: {fileID: 1970673423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Desert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11919,7 +12045,7 @@ GameObject:
   - component: {fileID: 2142269648}
   - component: {fileID: 2142269650}
   - component: {fileID: 2142269649}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Layer4_Sand
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -30,14 +30,14 @@ namespace ItemsSystem.Core
                 Destroy();
         }
 
-        private void Throw()
-        {
-            throw new System.NotImplementedException();
-        }
-        
         public void AddToStack(int amount)
         {
             _amount += amount;
+        }
+        
+        private void Throw()
+        {
+            throw new System.NotImplementedException();
         }
         
         private void Destroy()

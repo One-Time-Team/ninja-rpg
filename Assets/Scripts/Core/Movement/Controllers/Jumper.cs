@@ -1,6 +1,4 @@
-﻿using Core.Enums;
-using StatsSystem;
-using StatsSystem.Data;
+﻿using StatsSystem.Data;
 using StatsSystem.Enums;
 using UnityEngine;
 

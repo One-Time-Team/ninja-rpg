@@ -9,6 +9,8 @@ namespace InputReader
         [SerializeField] private Button _jumpButton;
         [SerializeField] private Button _attackButton;
 
+        [field: SerializeField] public Button InteractButton { get; private set; }
+
         public float HorizontalDirection => _joystick.Horizontal;
         public bool IsJumping { get; private set; }
         public bool IsAttacking { get; private set; }

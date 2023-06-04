@@ -15,7 +15,7 @@ MonoBehaviour:
   _shurikenDescriptor:
     <Id>k__BackingField: 1
     <ItemType>k__BackingField: 4
-    <Sprite>k__BackingField: {fileID: 0}
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 5c3aafedd8cf4bc48b05ef9cbf24c7f5, type: 3}
     <Rarity>k__BackingField: 2
     <Price>k__BackingField: 5
     <ShurikenType>k__BackingField: 0
