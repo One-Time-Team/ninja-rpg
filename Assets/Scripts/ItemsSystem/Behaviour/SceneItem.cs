@@ -45,7 +45,7 @@ namespace ItemsSystem.Behaviour
 
         private void Awake()
         {
-            ProjectUpdater.Instance.LateUpdateCalled += UpdateCollisionWithPlayer;
+            ProjectUpdater.Instance.LateUpdateCalled += OnUpdateCollisionWithPlayer;
         }
 
         private void OnDrawGizmos()
@@ -55,7 +55,8 @@ namespace ItemsSystem.Behaviour
         }
         private void OnDestroy()
         {
-            ProjectUpdater.Instance.LateUpdateCalled -= UpdateCollisionWithPlayer;
+            ProjectUpdater.Instance.LateUpdateCalled -= OnUpdateCollisionWithPlayer;
+            _interactButton.onClick.RemoveAllListeners();
         }
 
         public void SetItem(Sprite sprite, string itemName, Color textColor, Button interactButton, LayerMask playerLayer)
@@ -79,7 +80,7 @@ namespace ItemsSystem.Behaviour
             _sequence.OnComplete((() => _canvas.enabled = _textEnabled));
         }
         
-        private void UpdateCollisionWithPlayer()
+        private void OnUpdateCollisionWithPlayer()
         {
             Collider2D player = Physics2D.OverlapCircle(Position, InteractionDistance, _playerLayer);
             ToggleButton(player != null);

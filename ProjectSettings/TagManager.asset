@@ -18,9 +18,9 @@ TagManager:
   - Item
   - Player
   - Environment
-  - 
-  - 
-  - 
+  - Ground
+  - Obstacle
+  - Enemy
   - 
   - 
   - 

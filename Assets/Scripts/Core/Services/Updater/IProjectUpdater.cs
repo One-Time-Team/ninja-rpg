@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using UnityEngine;
 
 namespace Core.Services.Updater
 {
@@ -7,5 +9,7 @@ namespace Core.Services.Updater
         event Action UpdateCalled;
         event Action FixedUpdateCalled;
         event Action LateUpdateCalled;
+        Coroutine StartCoroutine(IEnumerator coroutine);
+        void StopCoroutine(Coroutine coroutine); 
     }
 }
