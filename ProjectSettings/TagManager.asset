@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - StartCamera
   - FinalCamera
+  - InteractButton
   layers:
   - Default
   - TransparentFX
@@ -14,12 +15,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Item
+  - Player
+  - Environment
+  - Ground
+  - Obstacle
+  - Enemy
   - 
   - 
   - 
@@ -43,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: GameScene
+    uniqueID: 3753191833
     locked: 0

@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using Core.Enums;
-using Player;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Core.Parallax
 {
-    public class ParallaxEffect : MonoBehaviour
+    public class ParallaxEffect : MonoBehaviour, IParallaxTargetMovement
     {
-        private const float TargetSpeedCoef = 2f;
-        
-        [SerializeField] private List<ParallaxLayer> _layers;
-        [SerializeField] private GameObject _target;
+        [SerializeField] private Transform _target;
         
         private float _previousTargetPosition;
+
+        [field: SerializeField] public List<ParallaxLayer> Layers { get; private set; }
+
+        public float ParallaxSpeedCoef { get; private set; } = 1f;
         
 
         private void OnEnable()
         {
-            if (_target != null)
-            {
-                var speed = _target.GetComponent<PlayerEntityHandler>().StatGiver.GetStat(StatType.Speed);
-                speed.SetValue(speed / TargetSpeedCoef);
-            }
+            ParallaxSpeedCoef /= 2;
             _previousTargetPosition = _target.transform.position.x;
         }
 
@@ -30,7 +24,7 @@ namespace Core.Parallax
         {
             float deltaMovement = _previousTargetPosition - _target.transform.position.x;
             
-            foreach (var layer in _layers)
+            foreach (var layer in Layers)
             {
                 Vector2 layerPosition = layer.Transform.position;
                 layerPosition.x += deltaMovement * layer.Speed;
@@ -42,19 +36,7 @@ namespace Core.Parallax
 
         private void OnDisable()
         {
-            if (_target != null)
-            {
-                var speed = _target.GetComponent<PlayerEntityHandler>().StatGiver.GetStat(StatType.Speed);
-                speed.SetValue(speed * TargetSpeedCoef);
-            }
-        }
-
-        
-        [Serializable]
-        private class ParallaxLayer
-        {
-            [field: SerializeField] public Transform Transform { get; private set; }
-            [field: SerializeField] public float Speed { get; private set; }
+            ParallaxSpeedCoef *= 2;
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Core.Enums;
 using Core.Services.Updater;
+using StatsSystem.Data;
+using StatsSystem.Enums;
 using UnityEngine;
 
 namespace StatsSystem
 {
-    public class StatsController: IDisposable, IStatValueGiver, IStatGiver
+    public class StatsController: IDisposable, IStatValueGiver
     {
         private readonly List<Stat> _currentStats;
         private readonly List<StatModificator> _activeModificators;
@@ -20,19 +21,14 @@ namespace StatsSystem
             
             ProjectUpdater.Instance.UpdateCalled += OnUpdate;
         }
-
-        public Stat GetStat(StatType statType) => _currentStats.Find(stat => stat.Type == statType);
+        
         public float GetValue(StatType statType) => _currentStats.Find(stat => stat.Type == statType);
 
         public void ProcessModificator(StatModificator modificator)
         {
-            if (modificator.Stat == 0)
-                modificator.Stat.SetValue(Mathf.Epsilon);
-            
             var statToChange = _currentStats.Find(stat => stat.Type == modificator.Stat.Type);
             
-            if (statToChange == null)
-                return;
+            if (statToChange == null) return;
 
             var newValue = modificator.Type == StatModificatorType.Additive
                 ? statToChange + modificator.Stat
@@ -40,21 +36,12 @@ namespace StatsSystem
             
             statToChange.SetValue(newValue);
 
-            if (modificator.Duration < 0)
-                return;
+            if (modificator.Duration <= 0) return;
 
             if (_activeModificators.Contains(modificator))
                 _activeModificators.Remove(modificator);
             else
-            {
-                newValue = modificator.Type == StatModificatorType.Additive 
-                    ? -modificator.Stat 
-                    : 1 / modificator.Stat;
-                
-                var addedStat = new Stat(modificator.Stat.Type, newValue);
-                var tempModificator = new StatModificator(addedStat, modificator.Type, modificator.Duration, Time.time);
-                _activeModificators.Add(tempModificator);
-            }
+                _activeModificators.Add(modificator.GetReversed());
         }
 
         public void Dispose()
@@ -68,7 +55,7 @@ namespace StatsSystem
                 return;
 
             var expiredModificators =
-                _activeModificators.Where(modificator => modificator.StartTime + modificator.Duration >= Time.time);
+                _activeModificators.Where(modificator => modificator.StartTime + modificator.Duration <= Time.time);
 
             foreach (var modificator in expiredModificators)
             {

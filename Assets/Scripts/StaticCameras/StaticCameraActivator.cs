@@ -13,6 +13,8 @@ namespace StaticCameras
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.GetComponent<PlayerEntityBehaviour>() == null) return;
+            
             _parallax.enabled = false;
             
             foreach (Transform staticCamera in transform)
@@ -31,6 +33,8 @@ namespace StaticCameras
 
         private void OnTriggerExit2D(Collider2D other)
         {
+            if (!other.TryGetComponent(out PlayerEntityBehaviour player)) return;
+            
             _parallax.enabled = true;
             
             foreach (Transform staticCamera in transform)
@@ -43,7 +47,7 @@ namespace StaticCameras
                     _cameras.FinalCamera.enabled = false;
             }
             
-            other.GetComponent<PlayerEntityHandler>()?.UpdateCameras();
+            player.UpdateCameras();
         }
     }
 }

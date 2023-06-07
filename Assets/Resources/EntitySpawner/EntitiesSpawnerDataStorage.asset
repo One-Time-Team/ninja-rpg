@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586d56b3bc50436d94a68fae1b0f111e, type: 3}
+  m_Name: EntitiesSpawnerDataStorage
+  m_EditorClassIdentifier: 
+  <EntitiesSpawnData>k__BackingField:
+  - {fileID: 11400000, guid: 764ccd4a1986f4a469e0a435ade547c2, type: 2}
