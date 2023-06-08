@@ -1,27 +1,22 @@
 ﻿using System.Collections.Generic;
-using Player;
-using StatsSystem.Enums;
 using UnityEngine;
 
 namespace Core.Parallax
 {
-    public class ParallaxEffect : MonoBehaviour
+    public class ParallaxEffect : MonoBehaviour, IParallaxTargetMovement
     {
-        private const float TargetSpeedCoef = 2f;
-        
-        [SerializeField] private GameObject _target;
-        [field: SerializeField] public List<ParallaxLayer> Layers { get; private set; }
+        [SerializeField] private Transform _target;
         
         private float _previousTargetPosition;
+
+        [field: SerializeField] public List<ParallaxLayer> Layers { get; private set; }
+
+        public float ParallaxSpeedCoef { get; private set; } = 1f;
         
 
         private void OnEnable()
         {
-            if (_target.TryGetComponent(out PlayerEntityHandler player))
-            {
-                var speed = player.StatGiver.GetStat(StatType.Speed);
-                speed.SetValue(speed / TargetSpeedCoef);
-            }
+            ParallaxSpeedCoef /= 2;
             _previousTargetPosition = _target.transform.position.x;
         }
 
@@ -41,10 +36,7 @@ namespace Core.Parallax
 
         private void OnDisable()
         {
-            if (_target == null || !_target.TryGetComponent(out PlayerEntityHandler player)) return;
-            
-            var speed = player.StatGiver.GetStat(StatType.Speed);
-            speed.SetValue(speed * TargetSpeedCoef);
+            ParallaxSpeedCoef *= 2;
         }
     }
 }

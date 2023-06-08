@@ -33,12 +33,12 @@ namespace ItemsSystem
             _interactButton = interactButton;
             _playerLayer = playerLayer;
             
-            ProjectUpdater.Instance.UpdateCalled += UpdateButtonState;
+            ProjectUpdater.Instance.UpdateCalled += OnUpdateButtonState;
         }
 
         public void Dispose()
         {
-            ProjectUpdater.Instance.UpdateCalled -= UpdateButtonState;
+            ProjectUpdater.Instance.UpdateCalled -= OnUpdateButtonState;
         }
 
         public void DropItem(ItemDescriptor descriptor, Vector2 position) =>
@@ -63,7 +63,7 @@ namespace ItemsSystem
             Object.Destroy(sceneItem.gameObject);
         }
 
-        private void UpdateButtonState()
+        private void OnUpdateButtonState()
         {
             bool buttonState = false; 
             foreach (var sceneItem in _itemsOnScene.Keys)

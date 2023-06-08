@@ -13,7 +13,7 @@ namespace StaticCameras
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.GetComponent<PlayerEntityHandler>() == null) return;
+            if (other.GetComponent<PlayerEntityBehaviour>() == null) return;
             
             _parallax.enabled = false;
             
@@ -33,7 +33,7 @@ namespace StaticCameras
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (!other.TryGetComponent(out PlayerEntityHandler player)) return;
+            if (!other.TryGetComponent(out PlayerEntityBehaviour player)) return;
             
             _parallax.enabled = true;
             

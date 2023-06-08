@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace StatsSystem
 {
-    public class StatsController: IDisposable, IStatValueGiver, IStatGiver
+    public class StatsController: IDisposable, IStatValueGiver
     {
         private readonly List<Stat> _currentStats;
         private readonly List<StatModificator> _activeModificators;
@@ -21,8 +21,7 @@ namespace StatsSystem
             
             ProjectUpdater.Instance.UpdateCalled += OnUpdate;
         }
-
-        public Stat GetStat(StatType statType) => _currentStats.Find(stat => stat.Type == statType);
+        
         public float GetValue(StatType statType) => _currentStats.Find(stat => stat.Type == statType);
 
         public void ProcessModificator(StatModificator modificator)

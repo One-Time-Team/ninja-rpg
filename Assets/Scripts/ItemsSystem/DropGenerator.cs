@@ -12,28 +12,28 @@ namespace ItemsSystem
 {
     class DropGenerator : IDisposable
     {
-        private readonly PlayerEntityHandler _playerEntityHandler;
+        private readonly PlayerEntityBehaviour _playerEntityBehaviour;
         private readonly List<ItemDescriptor> _itemDescriptors;
         private readonly ItemSystem _itemsSystem;
 
-        public DropGenerator(PlayerEntityHandler playerEntityHandler, List<ItemDescriptor> itemDescriptors, ItemSystem itemsSystem)
+        public DropGenerator(PlayerEntityBehaviour playerEntityBehaviour, List<ItemDescriptor> itemDescriptors, ItemSystem itemsSystem)
         {
-            _playerEntityHandler = playerEntityHandler;
+            _playerEntityBehaviour = playerEntityBehaviour;
             _itemDescriptors = itemDescriptors;
             _itemsSystem = itemsSystem;
-            ProjectUpdater.Instance.UpdateCalled += Update;
+            ProjectUpdater.Instance.UpdateCalled += OnUpdate;
         }
 
         public void Dispose()
         {
-            ProjectUpdater.Instance.UpdateCalled -= Update;
+            ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
         }
 
         private void DropRandomItem(ItemRarity itemRarity)
         {
             List<ItemDescriptor> items = _itemDescriptors.Where(item => item.Rarity == itemRarity).ToList();
             ItemDescriptor itemDescriptor = items[Random.Range(0, items.Count())];
-            _itemsSystem.DropItem(itemDescriptor, _playerEntityHandler.transform.position);
+            _itemsSystem.DropItem(itemDescriptor, _playerEntityBehaviour.transform.position);
         }
 
         private ItemRarity GetDropRarity()
@@ -50,9 +50,9 @@ namespace ItemsSystem
             };
         }
 
-        private void Update()
+        private void OnUpdate()
         {
-            if (Input.GetKeyUp(KeyCode.G))
+            if (Input.GetKeyDown(KeyCode.G))
                 DropRandomItem(GetDropRarity());
         }
     }

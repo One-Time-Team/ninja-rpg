@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,6 @@ namespace Core.Services.Updater
         private Button[] _buttons;
         private Joystick _joystick;
         
-        public event Action UpdateCalled;
-        public event Action FixedUpdateCalled;
-        public event Action LateUpdateCalled;
-
         public bool IsPaused
         {
             get => _isPaused;
@@ -35,8 +32,15 @@ namespace Core.Services.Updater
                 }
             }
         }
-
         
+        public event Action UpdateCalled;
+        public event Action FixedUpdateCalled;
+        public event Action LateUpdateCalled;
+
+        Coroutine IProjectUpdater.StartCoroutine(IEnumerator coroutine) => StartCoroutine(coroutine);
+        void IProjectUpdater.StopCoroutine(Coroutine coroutine) => StopCoroutine(coroutine);
+        
+
         private void Awake()
         {
             if (Instance == null)
