@@ -1,0 +1,409 @@
+fileFormatVersion: 2
+guid: ac41e1807964b5a4a8ad14a45b571675
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Equip_UpBoard
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 400
+        width: 202
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8385eaff2df8d4eac6549309c3c1d7
+      internalID: 1069050491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpBoard
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 428
+        width: 406
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35bfd04c7dfe9a24ab3ce3ecde92ca12
+      internalID: 114913151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Equip_LeftBoard
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 144
+        width: 12
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2677dd4fc30085a41a53b0ec116b59fd
+      internalID: 543797618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Equip_Background
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 154
+        width: 184
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8827643ea694747a548f6f0c2d0f39
+      internalID: 1598118774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LeftBoard
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 142
+        width: 16
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90dfd736800ba04ba5f34c96a71dd74
+      internalID: -1023377826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slot
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 257
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 657c4499d28352d4a82c2af74d0f55c2
+      internalID: -1340887443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightBoard
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 142
+        width: 16
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9365cfc503837244a0005e02844bfb4
+      internalID: 1629991484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tab
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 354
+        width: 62
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e259f5d2376e5d428e76bfb506d80b5
+      internalID: 1188260647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Equip_BottomBoard
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 144
+        width: 184
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a9dbe2a4b9971648a9590d92ea9d6b4
+      internalID: -1753577913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BottomBoard
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 118
+        width: 408
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a9a07057a024a449f3bcf2e86b9e86
+      internalID: -1537078962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      inventory 1_42: -1566855708
+      inventory 1_11: -2048061699
+      inventory 1_2: 789771613
+      inventory 1_46: 173689864
+      inventory 1_5: -762960798
+      BottomBoard: -1537078962
+      inventory 1_10: -1278911436
+      inventory 1_29: 900700459
+      inventory 1_38: -1486422503
+      inventory 1_13: -232479747
+      inventory 1_39: 412098308
+      inventory 1_23: 1738629577
+      inventory 1_28: 1868426816
+      Equip_UpBoard: 1069050491
+      inventory 1_59: -128648043
+      inventory 1_6: 279905178
+      inventory 1_3: 728450522
+      inventory 1_56: 1640654418
+      Equip_LeftBoard: 543797618
+      inventory 1_43: 1277291313
+      inventory 1_63: -1890174874
+      inventory 1_31: 1980381507
+      inventory 1_19: 1727332379
+      Equip_BottomBoard: -1753577913
+      inventory 1_1: 1185541719
+      inventory 1_14: -1724369040
+      inventory 1_36: 783593357
+      inventory 1_20: 144128804
+      inventory 1_17: -22797711
+      inventory 1_35: 1900198530
+      inventory 1_49: 1190517343
+      inventory 1_21: 182876746
+      inventory 1_53: -1125286958
+      Tab: 1188260647
+      inventory 1_32: 1981004275
+      LeftBoard: -1023377826
+      inventory 1_47: 715200756
+      inventory 1_15: 2112247498
+      inventory 1_26: -1844852272
+      inventory 1_40: 2019545257
+      inventory 1_60: -1881215758
+      inventory 1_22: -1891146440
+      inventory 1_37: 1525182683
+      inventory 1_0: 1274954570
+      inventory 1_44: 748229325
+      inventory 1_58: 1245321
+      inventory 1_45: -1002254950
+      inventory 1_16: 1427775166
+      inventory 1_54: 899036721
+      inventory 1_61: -553582480
+      inventory 1_7: -1110836648
+      UpBoard: 114913151
+      inventory 1_50: -1921231054
+      inventory 1_55: 1084016875
+      Equip_Background: 1598118774
+      Slot: -1340887443
+      inventory 1_12: -1142982542
+      inventory 1_62: 1675876578
+      RightBoard: 1629991484
+      inventory 1_51: -500020804
+      inventory 1_41: 1055035200
+      inventory 1_57: 1674903341
+      inventory 1_18: -685710529
+      inventory 1_9: -1391701523
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
