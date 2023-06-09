@@ -7,5 +7,6 @@
         Attack = 2,
         Jump = 3,
         Land = 4,
+        Death = 5,
     }
 }

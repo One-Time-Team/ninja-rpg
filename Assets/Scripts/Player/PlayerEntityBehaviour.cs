@@ -2,7 +2,9 @@ using Core.Enums;
 using Core.Movement.Controllers;
 using Core.Tools;
 using NPC.Behaviour;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player{
     
@@ -11,7 +13,13 @@ namespace Player{
         private const float LandingDetectionTime = 0.4f;
         
         [SerializeField] private Cameras _cameras;
-        
+
+        [field: SerializeField] public LayerMask Target { get; private set; }
+
+        [SerializeField] private Collider2D _hitZone;
+
+        [field: SerializeField] public Slider HPBar { get; private set; }
+
         private Jumper _jumper;
 
 
@@ -63,7 +71,6 @@ namespace Player{
             if (!Animator.PlayAnimation(AnimationType.Attack, true))
                 return;
 
-            Animator.ActionRequested += Attack;
             Animator.ActionEnded += EndAttack;
         }
 
@@ -80,17 +87,25 @@ namespace Player{
         }
         
         private void StartLanding() => _jumper.StartLanding();
-        
-        private void Attack()
+
+        public bool TryGetAttackTarget(out BaseEntityBehaviour target)
         {
-            Debug.Log("Attack has been committed");
+            List<Collider2D> results = new List<Collider2D>();
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.useLayerMask = true;
+            filter.SetLayerMask(Target);
+
+            target = null;
+            var numOfTargets = _hitZone.OverlapCollider(filter, results);
+            return numOfTargets != 0 && results[0].TryGetComponent(out target);
         }
 
         private void EndAttack()
         {
-            Animator.ActionRequested -= Attack;
             Animator.ActionEnded -= EndAttack;
             Animator.PlayAnimation(AnimationType.Attack, false);
         }
+
+        public void Die() => Animator.PlayAnimation(AnimationType.Death, true);
     }
 }

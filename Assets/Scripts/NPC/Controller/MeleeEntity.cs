@@ -40,11 +40,15 @@ namespace NPC.Controller
             ProjectUpdater.Instance.FixedUpdateCalled += OnFixedUpdateCalled;
             var speedDelta = StatValueGiver.GetValue(StatType.Speed) * ParallaxPlayerMovement.ParallaxSpeedCoef * Time.fixedDeltaTime;
             _moveDelta = new Vector2(speedDelta, speedDelta);
+            VisualiseHP(StatValueGiver.GetValue(StatsSystem.Enums.StatType.Health));
+            _meleeEntityBehaviour.Animator.ActionRequested += OnAttacked;
+            Died += OnDeath;
         }
 
         public void Dispose()
         {
             _meleeEntityBehaviour.AttackSequenceEnded -= OnAttackEnded;
+            _meleeEntityBehaviour.Animator.ActionRequested -= OnAttacked;
             ProjectUpdater.Instance.FixedUpdateCalled -= OnFixedUpdateCalled;
             if(_searchCoroutine != null)
                 ProjectUpdater.Instance.StopCoroutine(_searchCoroutine);
@@ -156,10 +160,30 @@ namespace NPC.Controller
             _meleeEntityBehaviour.MoveVertically(position.y);
         }
 
+        private void OnAttacked()
+        {
+            if (_meleeEntityBehaviour.TryGetAttackTarget(out BaseEntityBehaviour target))
+                target.TakeDamage(StatValueGiver.GetValue(StatsSystem.Enums.StatType.Damage));
+        }
+
         private void OnAttackEnded()
         {
             _isAttacking = false;
             _searchCoroutine = ProjectUpdater.Instance.StartCoroutine(SearchCoroutine());
+        }
+
+        private void OnDeath(Entity entity)
+        {
+            Dispose();
+            _meleeEntityBehaviour.Die();
+        }
+
+        protected sealed override void VisualiseHP(float currentHP)
+        {
+            if (_meleeEntityBehaviour.HPBar.maxValue < currentHP)
+                _meleeEntityBehaviour.HPBar.maxValue = currentHP;
+
+            _meleeEntityBehaviour.HPBar.value = currentHP;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Core.Animations;
 using Core.Enums;
 using Core.Movement.Controllers;
+using System;
 using UnityEngine;
 
 namespace NPC.Behaviour
@@ -8,10 +9,14 @@ namespace NPC.Behaviour
     [RequireComponent(typeof(Rigidbody2D))]
     public class BaseEntityBehaviour : MonoBehaviour
     {
-        [SerializeField] protected AnimatorController Animator;
+        [SerializeField] public AnimatorController Animator;
         
         protected Rigidbody2D Rigidbody;
         protected Mover Mover;
+        
+        public event Action<float> DamageTaken;
+
+        public void TakeDamage(float damage) => DamageTaken?.Invoke(damage);
 
         public virtual void Initialize()
         {
