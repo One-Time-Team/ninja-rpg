@@ -83,7 +83,7 @@ namespace ItemsSystem.Behaviour
         private void OnUpdateCollisionWithPlayer()
         {
             Collider2D player = Physics2D.OverlapCircle(Position, InteractionDistance, _playerLayer);
-            ToggleButton(player != null);
+            ToggleButton(player != null && !player.isTrigger);
         }
         
         private void ToggleButton(bool state)

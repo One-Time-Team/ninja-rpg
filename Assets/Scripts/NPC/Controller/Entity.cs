@@ -2,11 +2,12 @@
 using Core.Parallax;
 using NPC.Behaviour;
 using StatsSystem.Data;
+using StatsSystem.Enums;
 using UnityEngine;
 
 namespace NPC.Controller
 {
-    public abstract class Entity
+    public abstract class Entity : IDisposable
     {
         private readonly BaseEntityBehaviour _entityBehaviour;
         protected readonly IStatValueGiver StatValueGiver;
@@ -23,13 +24,28 @@ namespace NPC.Controller
             _entityBehaviour.Initialize();
             StatValueGiver = statValueGiver;
             ParallaxPlayerMovement = parallaxPlayerMovement;
-            _currentHP = StatValueGiver.GetValue(StatsSystem.Enums.StatType.Health);
+            _currentHP = StatValueGiver.GetValue(StatType.Health);
             _entityBehaviour.DamageTaken += OnDamageTaken;
+            Died += OnDeath;
+        }
+
+        public virtual void Dispose()
+        {
+            _entityBehaviour.DamageTaken -= OnDamageTaken;
+            Died -= OnDeath;
+        }
+        
+        protected abstract void VisualiseHP(float currentHP);
+        
+        private void OnDeath(Entity entity)
+        {
+            entity.Dispose();
+            _entityBehaviour.Die();
         }
 
         private void OnDamageTaken(float damage)
         {
-            damage -= StatValueGiver.GetValue(StatsSystem.Enums.StatType.Defence);
+            damage -= StatValueGiver.GetValue(StatType.Defence);
             if (damage <= 0)
                 return;
 
@@ -43,9 +59,5 @@ namespace NPC.Controller
                 Debug.Log($"Killed {this}");
             }
         }
-
-        protected abstract void VisualiseHP(float currentHP);
-
-        public GameObject GetGameObject() => _entityBehaviour.gameObject;
     }
 }

@@ -3150,11 +3150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &555024751 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1571704167383556611, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
-  m_PrefabInstance: {fileID: 1571704166619076192}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &628508559
 GameObject:
   m_ObjectHideFlags: 0
@@ -9338,7 +9333,7 @@ MonoBehaviour:
       <MainCamera>k__BackingField: {fileID: 519420031}
     _levelLeftBorder: {fileID: 174666064}
     _levelRightBorder: {fileID: 904296739}
-  _playerEntity: {fileID: 1404122219}
+  _player: {fileID: 1404122219}
   _gameUIInputView: {fileID: 32596157}
   _itemRarityStorage: {fileID: 11400000, guid: a0effcd68fecae947b91eee88857c584, type: 2}
   _itemsStorage: {fileID: 11400000, guid: 68a9ab24f498f474497c98aacd849009, type: 2}
@@ -9858,28 +9853,23 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1571704167383556619, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
   m_PrefabInstance: {fileID: 1571704166619076192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555024751}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a159990199e3334e81e3d05bc32bc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &1404122228
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!114 &1404122230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1571704167383556622, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
+  m_PrefabInstance: {fileID: 1571704166619076192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 555024751}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 1.65, y: -0.6}
-  serializedVersion: 2
-  m_Radius: 1.4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2fe6ffecbf04b41a272cecf5c5bce99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1404274118
 GameObject:
   m_ObjectHideFlags: 0
@@ -12532,21 +12522,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1571704167383556619, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
-      propertyPath: _hitZone
-      value: 
-      objectReference: {fileID: 1404122228}
-    - target: {fileID: 1571704167383556619, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
       propertyPath: <HPBar>k__BackingField
       value: 
       objectReference: {fileID: 777417972}
     - target: {fileID: 1571704167383556619, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
+      propertyPath: <Animator>k__BackingField
+      value: 
+      objectReference: {fileID: 1404122230}
+    - target: {fileID: 1571704167383556619, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
       propertyPath: _cameras._leftDirectionCamera
       value: 
       objectReference: {fileID: 2027839563}
-    - target: {fileID: 1571704167383556619, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
-      propertyPath: <Target>k__BackingField.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
     - target: {fileID: 1571704167383556619, guid: 8d4dbac3ed33e4a4d839f1500397684e, type: 3}
       propertyPath: _cameras._rightDirectionCamera
       value: 

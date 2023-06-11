@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ItemsSystem.Storages
 {
-    [CreateAssetMenu(fileName = "ItemRarityStorage", menuName = "ItemsSystem/ItemRarityStorage")]
+    [CreateAssetMenu(fileName = nameof(ItemRarityStorage), menuName = "ItemsSystem/ItemRarityStorage")]
     public class ItemRarityStorage : ScriptableObject
     {
         [field: SerializeField] public List<RarityDescriptor> RarityDescriptors { get; private set; }

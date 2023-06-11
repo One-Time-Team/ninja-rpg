@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Core.Parallax;
 using Core.Services.Updater;
@@ -8,11 +7,10 @@ using NPC.Behaviour;
 using NPC.Controller;
 using StatsSystem.Data;
 using StatsSystem.Enums;
-using UnityEngine;
 
 namespace Player
 {
-    public class PlayerEntity : Entity, IDisposable
+    public class PlayerEntity : Entity
     {
         private readonly PlayerEntityBehaviour _player;
         private readonly List<IEntityInputSource> _inputSources;
@@ -25,25 +23,39 @@ namespace Player
             _inputSources = inputSources;
 
             ProjectUpdater.Instance.FixedUpdateCalled += OnFixedUpdate;
-            VisualiseHP(StatValueGiver.GetValue(StatsSystem.Enums.StatType.Health));
-            _player.Animator.ActionRequested += OnAttacked;
-            Died += OnDeath;
+            VisualiseHP(StatValueGiver.GetValue(StatType.Health));
+            _player.AttackImpacted += OnAttack;
         }
 
-        public void Dispose() 
+        public override void Dispose() 
         { 
+            base.Dispose();
             ProjectUpdater.Instance.FixedUpdateCalled -= OnFixedUpdate;
-            _player.Animator.ActionRequested -= OnAttacked;
+            _player.AttackImpacted -= OnAttack;
+        }
+        
+        protected sealed override void VisualiseHP(float currentHP)
+        {
+            if (_player.HPBar.maxValue < currentHP)
+                _player.HPBar.maxValue = currentHP;
+
+            _player.HPBar.value = currentHP;
         }
 
         private void OnFixedUpdate()
         {
+            if (_player.IsAttackProcessing)
+            {
+                _player.MoveHorizontally(0);
+                return;
+            }
+            
             _player.MoveHorizontally(GetDirection() * StatValueGiver.GetValue(StatType.Speed) * ParallaxPlayerMovement.ParallaxSpeedCoef);
 
-            if (IsJumping)
+            if (Jumped)
                 _player.Jump(StatValueGiver.GetValue(StatType.JumpForce));
 
-            if (IsAttacking)
+            if (AttackStarted)
                 _player.StartAttack();
 
             foreach (var inputSource in _inputSources)
@@ -63,28 +75,14 @@ namespace Player
             return 0;
         }
 
-        private void OnAttacked()
+        private void OnAttack()
         {
             if (_player.TryGetAttackTarget(out BaseEntityBehaviour target))
-                target.TakeDamage(StatValueGiver.GetValue(StatsSystem.Enums.StatType.Damage));
+                target.TakeDamage(StatValueGiver.GetValue(StatType.Damage));
         }
 
-        protected sealed override void VisualiseHP(float currentHP)
-        {
-            if (_player.HPBar.maxValue < currentHP)
-                _player.HPBar.maxValue = currentHP;
-
-            _player.HPBar.value = currentHP;
-        }
-
-        private void OnDeath(Entity entity)
-        {
-            Dispose();
-            _player.Die();
-        }
-
-        private bool IsJumping => _inputSources.Any(inputSource => inputSource.IsJumping);
+        private bool Jumped => _inputSources.Any(inputSource => inputSource.Jumped);
         
-        private bool IsAttacking => _inputSources.Any(inputSource => inputSource.IsAttacking);
+        private bool AttackStarted => _inputSources.Any(inputSource => inputSource.AttackStarted);
     }
 }

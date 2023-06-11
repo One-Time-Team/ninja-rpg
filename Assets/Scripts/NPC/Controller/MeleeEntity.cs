@@ -3,6 +3,7 @@ using System.Collections;
 using Core.Enums;
 using Core.Parallax;
 using Core.Services.Updater;
+using ItemsSystem;
 using NPC.Behaviour;
 using Pathfinding;
 using StatsSystem.Data;
@@ -11,16 +12,17 @@ using UnityEngine;
 
 namespace NPC.Controller
 {
-    public class MeleeEntity : Entity, IDisposable
+    public class MeleeEntity : Entity
     {
         private const float CoroutineCycleTime = 0.2f;
         
         private readonly Seeker _seeker;
         private readonly MeleeEntityBehaviour _meleeEntityBehaviour;
         private readonly Vector2 _moveDelta;
+        private readonly DropGenerator _dropGenerator;
+        private readonly int _dropAmount;
         
         private bool _isAttacking;
-        
         private Coroutine _searchCoroutine;
         private Collider2D _target;
         private Vector3 _previousTargetPosition;
@@ -30,28 +32,42 @@ namespace NPC.Controller
         private int _currentWayPoint;
         
         
-        public MeleeEntity(MeleeEntityBehaviour meleeEntityBehaviour, IStatValueGiver statValueGiver, IParallaxTargetMovement parallaxPlayerMovement) :
+        public MeleeEntity(MeleeEntityBehaviour meleeEntityBehaviour, IStatValueGiver statValueGiver, 
+            IParallaxTargetMovement parallaxPlayerMovement, DropGenerator dropGenerator, int dropAmount) :
             base(meleeEntityBehaviour, statValueGiver, parallaxPlayerMovement)
         {
             _seeker = meleeEntityBehaviour.GetComponent<Seeker>();
             _meleeEntityBehaviour = meleeEntityBehaviour;
+            _dropGenerator = dropGenerator;
+            _dropAmount = dropAmount;
             _meleeEntityBehaviour.AttackSequenceEnded += OnAttackEnded;
             _searchCoroutine = ProjectUpdater.Instance.StartCoroutine(SearchCoroutine());
             ProjectUpdater.Instance.FixedUpdateCalled += OnFixedUpdateCalled;
             var speedDelta = StatValueGiver.GetValue(StatType.Speed) * ParallaxPlayerMovement.ParallaxSpeedCoef * Time.fixedDeltaTime;
             _moveDelta = new Vector2(speedDelta, speedDelta);
-            VisualiseHP(StatValueGiver.GetValue(StatsSystem.Enums.StatType.Health));
-            _meleeEntityBehaviour.Animator.ActionRequested += OnAttacked;
-            Died += OnDeath;
+            
+            VisualiseHP(StatValueGiver.GetValue(StatType.Health));
+            _meleeEntityBehaviour.AttackImpacted += OnAttack;
+            _meleeEntityBehaviour.Disappeared += OnDisappeared;
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
+            base.Dispose();
             _meleeEntityBehaviour.AttackSequenceEnded -= OnAttackEnded;
-            _meleeEntityBehaviour.Animator.ActionRequested -= OnAttacked;
             ProjectUpdater.Instance.FixedUpdateCalled -= OnFixedUpdateCalled;
             if(_searchCoroutine != null)
                 ProjectUpdater.Instance.StopCoroutine(_searchCoroutine);
+            
+            _meleeEntityBehaviour.AttackImpacted -= OnAttack;
+        }
+        
+        protected sealed override void VisualiseHP(float currentHP)
+        {
+            if (_meleeEntityBehaviour.HPBar.maxValue < currentHP)
+                _meleeEntityBehaviour.HPBar.maxValue = currentHP;
+
+            _meleeEntityBehaviour.HPBar.value = currentHP;
         }
 
         private IEnumerator SearchCoroutine()
@@ -160,10 +176,10 @@ namespace NPC.Controller
             _meleeEntityBehaviour.MoveVertically(position.y);
         }
 
-        private void OnAttacked()
+        private void OnAttack()
         {
             if (_meleeEntityBehaviour.TryGetAttackTarget(out BaseEntityBehaviour target))
-                target.TakeDamage(StatValueGiver.GetValue(StatsSystem.Enums.StatType.Damage));
+                target.TakeDamage(StatValueGiver.GetValue(StatType.Damage));
         }
 
         private void OnAttackEnded()
@@ -172,18 +188,15 @@ namespace NPC.Controller
             _searchCoroutine = ProjectUpdater.Instance.StartCoroutine(SearchCoroutine());
         }
 
-        private void OnDeath(Entity entity)
+        private void OnDisappeared()
         {
-            Dispose();
-            _meleeEntityBehaviour.Die();
-        }
+            _meleeEntityBehaviour.Disappeared -= OnDisappeared;
 
-        protected sealed override void VisualiseHP(float currentHP)
-        {
-            if (_meleeEntityBehaviour.HPBar.maxValue < currentHP)
-                _meleeEntityBehaviour.HPBar.maxValue = currentHP;
-
-            _meleeEntityBehaviour.HPBar.value = currentHP;
+            if (_dropAmount <= 0) return;
+            for (float i = 1; i <= _dropAmount; i++)
+            {
+                _dropGenerator.DropRandomItem(_meleeEntityBehaviour.transform.position);
+            }
         }
     }
 }

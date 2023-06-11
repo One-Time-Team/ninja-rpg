@@ -3,8 +3,8 @@
     public interface IEntityInputSource
     {
         float HorizontalDirection { get; }
-        bool IsJumping { get; }
-        bool IsAttacking { get; }
+        bool Jumped { get; }
+        bool AttackStarted { get; }
 
         void ResetOneTimeActions();
     }

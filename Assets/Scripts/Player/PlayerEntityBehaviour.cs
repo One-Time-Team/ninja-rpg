@@ -1,10 +1,10 @@
+using System;
+using System.Collections.Generic;
 using Core.Enums;
 using Core.Movement.Controllers;
 using Core.Tools;
 using NPC.Behaviour;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Player{
     
@@ -13,14 +13,15 @@ namespace Player{
         private const float LandingDetectionTime = 0.4f;
         
         [SerializeField] private Cameras _cameras;
-
-        [field: SerializeField] public LayerMask Target { get; private set; }
-
         [SerializeField] private Collider2D _hitZone;
-
-        [field: SerializeField] public Slider HPBar { get; private set; }
-
+        
         private Jumper _jumper;
+        
+        [field: SerializeField] public LayerMask Target { get; private set; }
+        
+        public bool IsAttackProcessing { get; private set; }
+        
+        public event Action AttackImpacted;
 
 
         private void Update()
@@ -45,6 +46,7 @@ namespace Player{
             base.Initialize();
             Mover = new VelocityMover(Rigidbody);
             _jumper = new Jumper(Rigidbody);
+            _hitZone.enabled = false;
         }
         
         public void UpdateCameras()
@@ -70,8 +72,24 @@ namespace Player{
         {
             if (!Animator.PlayAnimation(AnimationType.Attack, true))
                 return;
+            
+            _hitZone.enabled = true;
+            IsAttackProcessing = true;
 
+            Animator.ActionRequested += OnAttackImpacted;
             Animator.ActionEnded += EndAttack;
+        }
+        
+        public bool TryGetAttackTarget(out BaseEntityBehaviour target)
+        {
+            List<Collider2D> results = new List<Collider2D>();
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.useLayerMask = true;
+            filter.SetLayerMask(Target);
+
+            target = null;
+            var numOfTargets = _hitZone.OverlapCollider(filter, results);
+            return numOfTargets != 0 && results[0].TryGetComponent(out target);
         }
 
         protected override void UpdateAnimations()
@@ -87,25 +105,19 @@ namespace Player{
         }
         
         private void StartLanding() => _jumper.StartLanding();
-
-        public bool TryGetAttackTarget(out BaseEntityBehaviour target)
+        
+        private void OnAttackImpacted()
         {
-            List<Collider2D> results = new List<Collider2D>();
-            ContactFilter2D filter = new ContactFilter2D();
-            filter.useLayerMask = true;
-            filter.SetLayerMask(Target);
-
-            target = null;
-            var numOfTargets = _hitZone.OverlapCollider(filter, results);
-            return numOfTargets != 0 && results[0].TryGetComponent(out target);
+            AttackImpacted?.Invoke();
         }
 
         private void EndAttack()
         {
+            Animator.ActionRequested -= OnAttackImpacted;
             Animator.ActionEnded -= EndAttack;
             Animator.PlayAnimation(AnimationType.Attack, false);
+            _hitZone.enabled = false;
+            IsAttackProcessing = false;
         }
-
-        public void Die() => Animator.PlayAnimation(AnimationType.Death, true);
     }
 }
