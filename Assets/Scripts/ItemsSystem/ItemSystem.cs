@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 
 namespace ItemsSystem
 {
-    class ItemSystem : IDisposable
+    public class ItemSystem : IDisposable
     {
         private SceneItem _sceneItem;
         private ItemsFactory _itemsFactory;
@@ -25,8 +25,10 @@ namespace ItemsSystem
         {
             _sceneItem = Resources.Load<SceneItem>($"{nameof(ItemSystem)}/{nameof(SceneItem)}");
             _itemsOnScene = new Dictionary<SceneItem, Item>();
-            GameObject gameObject = new GameObject();
-            gameObject.name = nameof(ItemSystem);
+            GameObject gameObject = new GameObject
+            {
+                name = nameof(ItemSystem)
+            };
             Transform = gameObject.transform;
             _colors = colors;
             _itemsFactory = itemsFactory;
@@ -69,7 +71,8 @@ namespace ItemsSystem
             foreach (var sceneItem in _itemsOnScene.Keys)
             {
                 Collider2D player = Physics2D.OverlapCircle(sceneItem.Position, sceneItem.InteractionDistance, _playerLayer);
-                buttonState = buttonState || player;
+                if (player == null || player.isTrigger) continue;
+                buttonState = true;
             }
             
             _interactButton.gameObject.SetActive(buttonState);

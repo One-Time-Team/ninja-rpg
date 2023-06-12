@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 namespace ItemsSystem
 {
-    class DropGenerator : IDisposable
+    public class DropGenerator : IDisposable
     {
         private readonly PlayerEntityBehaviour _playerEntityBehaviour;
         private readonly List<ItemDescriptor> _itemDescriptors;
@@ -29,14 +29,15 @@ namespace ItemsSystem
             ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
         }
 
-        private void DropRandomItem(ItemRarity itemRarity)
+        public void DropRandomItem(Vector2 position)
         {
+            ItemRarity itemRarity = GetRandomDropRarity();
             List<ItemDescriptor> items = _itemDescriptors.Where(item => item.Rarity == itemRarity).ToList();
             ItemDescriptor itemDescriptor = items[Random.Range(0, items.Count())];
-            _itemsSystem.DropItem(itemDescriptor, _playerEntityBehaviour.transform.position);
+            _itemsSystem.DropItem(itemDescriptor, position);
         }
 
-        private ItemRarity GetDropRarity()
+        private ItemRarity GetRandomDropRarity()
         {
             float chance = Random.Range(0, 100);
             return chance switch
@@ -53,7 +54,7 @@ namespace ItemsSystem
         private void OnUpdate()
         {
             if (Input.GetKeyDown(KeyCode.G))
-                DropRandomItem(GetDropRarity());
+                DropRandomItem(_playerEntityBehaviour.transform.position);
         }
     }
 }

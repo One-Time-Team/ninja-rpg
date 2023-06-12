@@ -18,7 +18,7 @@ namespace Core
     public class GameLevelInitializer : MonoBehaviour
     {
         [SerializeField] private WorldBoundaries _levelBorders;
-        [SerializeField] private PlayerEntityBehaviour _playerEntity;
+        [SerializeField] private PlayerEntityBehaviour _player;
         [SerializeField] private GameUIInputView _gameUIInputView;
         [SerializeField] private ItemRarityStorage _itemRarityStorage;
         [SerializeField] private ItemsStorage _itemsStorage;
@@ -31,7 +31,7 @@ namespace Core
         private ProjectUpdater _projectUpdater;
         private DropGenerator _dropGenerator;
         private ItemSystem _itemSystem;
-        private EntitySpawner _entitySpawner;
+        private EntitiesSystem _entitiesSystem;
 
         private List<IDisposable> _disposables;
         
@@ -53,7 +53,7 @@ namespace Core
             _externalDeviceInputReader = new ExternalDeviceInputReader();
             _disposables.Add(_externalDeviceInputReader);
             
-            _playerSystem = new PlayerSystem(_playerEntity, _parallaxEffect, new List<IEntityInputSource>
+            _playerSystem = new PlayerSystem(_player, _parallaxEffect, new List<IEntityInputSource>
             {
                 _gameUIInputView,
                 _externalDeviceInputReader,
@@ -66,11 +66,11 @@ namespace Core
             _parallaxEffect.Layers.Add(new ParallaxLayer(_itemSystem.Transform, 1));
             _disposables.Add(_itemSystem);
             List<ItemDescriptor> itemDescriptors = _itemsStorage.ItemScriptables.Select(scriptable => scriptable.ItemDescriptor).ToList();
-            _dropGenerator = new DropGenerator(_playerEntity, itemDescriptors, _itemSystem);
+            _dropGenerator = new DropGenerator(_player, itemDescriptors, _itemSystem);
             _disposables.Add(_dropGenerator);
             
-            _entitySpawner = new EntitySpawner(_parallaxEffect);
-            _parallaxEffect.Layers.Add(new ParallaxLayer(_entitySpawner.Transform, 1));
+            _entitiesSystem = new EntitiesSystem(_parallaxEffect);
+            _parallaxEffect.Layers.Add(new ParallaxLayer(_entitiesSystem.Transform, 1));
         }
 
         private void Update()
@@ -79,7 +79,7 @@ namespace Core
                 _projectUpdater.IsPaused = !_projectUpdater.IsPaused;
             
             if(Input.GetKeyDown(KeyCode.Q))
-                _entitySpawner.SpawnEntity(EntityId.Ronin, _entitySpawnPoint.position);
+                _entitiesSystem.SpawnEntity(EntityId.Ronin, _entitySpawnPoint.position, _dropGenerator);
         }
 
         private void OnDestroy()

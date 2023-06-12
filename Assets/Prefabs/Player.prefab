@@ -15,9 +15,11 @@ GameObject:
   - component: {fileID: 1571704167383556616}
   - component: {fileID: 1571704167383556621}
   - component: {fileID: 1571704167383556620}
+  - component: {fileID: 1404122228}
   - component: {fileID: 1571704167383556617}
   - component: {fileID: 1571704167383556619}
   - component: {fileID: 1571704167383556622}
+  - component: {fileID: 4439377653107292651}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -207,6 +209,22 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!58 &1404122228
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571704167383556611}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.65, y: -0.6}
+  serializedVersion: 2
+  m_Radius: 1.4
 --- !u!1839735485 &1571704167383556617
 Tilemap:
   m_ObjectHideFlags: 0
@@ -264,6 +282,11 @@ MonoBehaviour:
     <StartCamera>k__BackingField: {fileID: 0}
     <FinalCamera>k__BackingField: {fileID: 0}
     <MainCamera>k__BackingField: {fileID: 0}
+  <Target>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 2048
+  _hitZone: {fileID: 1404122228}
+  <HPBar>k__BackingField: {fileID: 0}
 --- !u!114 &1571704167383556622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,3 +299,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2fe6ffecbf04b41a272cecf5c5bce99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4439377653107292651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571704167383556611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0ae1ebf58742e88e29550fc37b5560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1571704167383556622}
+  _skins:
+  - <Animations>k__BackingField:
+    - <Sprites>k__BackingField:
+      - {fileID: -1552076767, guid: c19c845c575d1b94e975a48f5e84e519, type: 3}
+      - {fileID: -227738394, guid: c19c845c575d1b94e975a48f5e84e519, type: 3}
+      - {fileID: -1811093778, guid: c19c845c575d1b94e975a48f5e84e519, type: 3}
+      - {fileID: -73629000, guid: c19c845c575d1b94e975a48f5e84e519, type: 3}
+  - <Animations>k__BackingField:
+    - <Sprites>k__BackingField:
+      - {fileID: 112089613, guid: 1d03223653bb2eb4782bd9bc58edc675, type: 3}
+      - {fileID: 713017568, guid: 1d03223653bb2eb4782bd9bc58edc675, type: 3}
+      - {fileID: -699820977, guid: 1d03223653bb2eb4782bd9bc58edc675, type: 3}
+      - {fileID: 402896197, guid: 1d03223653bb2eb4782bd9bc58edc675, type: 3}
+  - <Animations>k__BackingField:
+    - <Sprites>k__BackingField:
+      - {fileID: -305765925, guid: 9e7ef3c0c8f72fe40805eb20f30522a0, type: 3}
+      - {fileID: -139000387, guid: 9e7ef3c0c8f72fe40805eb20f30522a0, type: 3}
+      - {fileID: 1533097174, guid: 9e7ef3c0c8f72fe40805eb20f30522a0, type: 3}
+      - {fileID: -217925281, guid: 9e7ef3c0c8f72fe40805eb20f30522a0, type: 3}
+  - <Animations>k__BackingField:
+    - <Sprites>k__BackingField:
+      - {fileID: -1827189585, guid: 3199e3c0fdb34e94bbb0ecee5bfde735, type: 3}
+      - {fileID: 1617825486, guid: 3199e3c0fdb34e94bbb0ecee5bfde735, type: 3}
+      - {fileID: 1258392000, guid: 3199e3c0fdb34e94bbb0ecee5bfde735, type: 3}
+      - {fileID: -1972780168, guid: 3199e3c0fdb34e94bbb0ecee5bfde735, type: 3}
+  <PlayerSkin>k__BackingField: 0

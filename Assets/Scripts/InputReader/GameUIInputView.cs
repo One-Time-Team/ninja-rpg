@@ -12,14 +12,14 @@ namespace InputReader
         [field: SerializeField] public Button InteractButton { get; private set; }
 
         public float HorizontalDirection => _joystick.Horizontal;
-        public bool IsJumping { get; private set; }
-        public bool IsAttacking { get; private set; }
+        public bool Jumped { get; private set; }
+        public bool AttackStarted { get; private set; }
 
 
         private void Awake()
         {
-            _jumpButton.onClick.AddListener(() => IsJumping = true);
-            _attackButton.onClick.AddListener(() => IsAttacking = true);
+            _jumpButton.onClick.AddListener(() => Jumped = true);
+            _attackButton.onClick.AddListener(() => AttackStarted = true);
         }
 
         private void OnDestroy()
@@ -30,8 +30,8 @@ namespace InputReader
 
         public void ResetOneTimeActions()
         {
-            IsJumping = false;
-            IsAttacking = false;
+            Jumped = false;
+            AttackStarted = false;
         }
     }
 }

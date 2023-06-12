@@ -6,8 +6,8 @@ namespace Core.Animations
 {
     public abstract class AnimatorController : MonoBehaviour
     {
-        private AnimationType _currentAnimationType;
-
+        public AnimationType CurrentAnimationType { get; private set; }
+        
         public event Action ActionRequested;
         public event Action ActionEnded;
         
@@ -16,19 +16,19 @@ namespace Core.Animations
         {
             if (!isActive)
             {
-                if (animationType == AnimationType.Idle || animationType != _currentAnimationType)
+                if (animationType == AnimationType.Idle || animationType != CurrentAnimationType)
                     return false;
 
-                _currentAnimationType = AnimationType.Idle;
-                PlayAnimation(_currentAnimationType);
+                CurrentAnimationType = AnimationType.Idle;
+                PlayAnimation(CurrentAnimationType);
                 return false;
             }
 
-            if (animationType <= _currentAnimationType)
+            if (animationType <= CurrentAnimationType)
                 return false;
 
-            _currentAnimationType = animationType;
-            PlayAnimation(_currentAnimationType);
+            CurrentAnimationType = animationType;
+            PlayAnimation(CurrentAnimationType);
             return true;
         }
 

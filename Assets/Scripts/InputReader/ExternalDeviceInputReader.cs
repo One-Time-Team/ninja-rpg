@@ -8,8 +8,8 @@ namespace InputReader
     public class ExternalDeviceInputReader : IEntityInputSource, IDisposable
     {
         public float HorizontalDirection => Input.GetAxisRaw("Horizontal");
-        public bool IsJumping { get; private set; }
-        public bool IsAttacking { get; private set; }
+        public bool Jumped { get; private set; }
+        public bool AttackStarted { get; private set; }
 
 
         public ExternalDeviceInputReader()
@@ -19,8 +19,8 @@ namespace InputReader
         
         public void ResetOneTimeActions()
         {
-            IsJumping = false;
-            IsAttacking = false;
+            Jumped = false;
+            AttackStarted = false;
         }
         
         public void Dispose() => ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
@@ -29,12 +29,12 @@ namespace InputReader
         {
             if (Input.GetButtonDown("Jump"))
             {
-                IsJumping = true;
+                Jumped = true;
             }
 
             if (!IsPointerOverUI() && Input.GetButtonDown("Fire1"))
             {
-                IsAttacking = true;
+                AttackStarted = true;
             }
         }
         

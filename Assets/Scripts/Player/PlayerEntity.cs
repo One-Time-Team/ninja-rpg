@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Core.Parallax;
 using Core.Services.Updater;
 using InputReader;
+using NPC.Behaviour;
 using NPC.Controller;
 using StatsSystem.Data;
 using StatsSystem.Enums;
 
 namespace Player
 {
-    public class PlayerEntity : Entity, IDisposable
+    public class PlayerEntity : Entity
     {
         private readonly PlayerEntityBehaviour _player;
         private readonly List<IEntityInputSource> _inputSources;
@@ -23,18 +23,39 @@ namespace Player
             _inputSources = inputSources;
 
             ProjectUpdater.Instance.FixedUpdateCalled += OnFixedUpdate;
+            VisualiseHP(StatValueGiver.GetValue(StatType.Health));
+            _player.AttackImpacted += OnAttack;
         }
 
-        public void Dispose() => ProjectUpdater.Instance.FixedUpdateCalled -= OnFixedUpdate;
+        public override void Dispose() 
+        { 
+            base.Dispose();
+            ProjectUpdater.Instance.FixedUpdateCalled -= OnFixedUpdate;
+            _player.AttackImpacted -= OnAttack;
+        }
+        
+        protected sealed override void VisualiseHP(float currentHP)
+        {
+            if (_player.HPBar.maxValue < currentHP)
+                _player.HPBar.maxValue = currentHP;
+
+            _player.HPBar.value = currentHP;
+        }
 
         private void OnFixedUpdate()
         {
+            if (_player.IsAttackProcessing)
+            {
+                _player.MoveHorizontally(0);
+                return;
+            }
+            
             _player.MoveHorizontally(GetDirection() * StatValueGiver.GetValue(StatType.Speed) * ParallaxPlayerMovement.ParallaxSpeedCoef);
 
-            if (IsJumping)
+            if (Jumped)
                 _player.Jump(StatValueGiver.GetValue(StatType.JumpForce));
 
-            if (IsAttacking)
+            if (AttackStarted)
                 _player.StartAttack();
 
             foreach (var inputSource in _inputSources)
@@ -54,8 +75,14 @@ namespace Player
             return 0;
         }
 
-        private bool IsJumping => _inputSources.Any(inputSource => inputSource.IsJumping);
+        private void OnAttack()
+        {
+            if (_player.TryGetAttackTarget(out BaseEntityBehaviour target))
+                target.TakeDamage(StatValueGiver.GetValue(StatType.Damage));
+        }
+
+        private bool Jumped => _inputSources.Any(inputSource => inputSource.Jumped);
         
-        private bool IsAttacking => _inputSources.Any(inputSource => inputSource.IsAttacking);
+        private bool AttackStarted => _inputSources.Any(inputSource => inputSource.AttackStarted);
     }
 }

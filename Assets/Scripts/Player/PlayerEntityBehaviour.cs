@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Core.Enums;
 using Core.Movement.Controllers;
 using Core.Tools;
@@ -11,8 +13,15 @@ namespace Player{
         private const float LandingDetectionTime = 0.4f;
         
         [SerializeField] private Cameras _cameras;
+        [SerializeField] private Collider2D _hitZone;
         
         private Jumper _jumper;
+        
+        [field: SerializeField] public LayerMask Target { get; private set; }
+        
+        public bool IsAttackProcessing { get; private set; }
+        
+        public event Action AttackImpacted;
 
 
         private void Update()
@@ -37,6 +46,7 @@ namespace Player{
             base.Initialize();
             Mover = new VelocityMover(Rigidbody);
             _jumper = new Jumper(Rigidbody);
+            _hitZone.enabled = false;
         }
         
         public void UpdateCameras()
@@ -62,9 +72,24 @@ namespace Player{
         {
             if (!Animator.PlayAnimation(AnimationType.Attack, true))
                 return;
+            
+            _hitZone.enabled = true;
+            IsAttackProcessing = true;
 
-            Animator.ActionRequested += Attack;
+            Animator.ActionRequested += OnAttackImpacted;
             Animator.ActionEnded += EndAttack;
+        }
+        
+        public bool TryGetAttackTarget(out BaseEntityBehaviour target)
+        {
+            List<Collider2D> results = new List<Collider2D>();
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.useLayerMask = true;
+            filter.SetLayerMask(Target);
+
+            target = null;
+            var numOfTargets = _hitZone.OverlapCollider(filter, results);
+            return numOfTargets != 0 && results[0].TryGetComponent(out target);
         }
 
         protected override void UpdateAnimations()
@@ -81,16 +106,18 @@ namespace Player{
         
         private void StartLanding() => _jumper.StartLanding();
         
-        private void Attack()
+        private void OnAttackImpacted()
         {
-            Debug.Log("Attack has been committed");
+            AttackImpacted?.Invoke();
         }
 
         private void EndAttack()
         {
-            Animator.ActionRequested -= Attack;
+            Animator.ActionRequested -= OnAttackImpacted;
             Animator.ActionEnded -= EndAttack;
             Animator.PlayAnimation(AnimationType.Attack, false);
+            _hitZone.enabled = false;
+            IsAttackProcessing = false;
         }
     }
 }

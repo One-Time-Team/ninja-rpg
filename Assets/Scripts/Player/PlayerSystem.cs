@@ -21,7 +21,7 @@ namespace Player
         {
             _disposables = new List<IDisposable>();
 
-            var statsStorage = Resources.Load<StatsStorage>($"Player/{nameof(StatsStorage)}");
+            var statsStorage = Resources.Load<StatsStorage>($"{nameof(Player)}/{nameof(StatsStorage)}");
             var stats = statsStorage.Stats.Select(stat => stat.GetCopy()).ToList();
             StatsController = new StatsController(stats);
             _disposables.Add(StatsController);
