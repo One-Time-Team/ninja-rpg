@@ -13,6 +13,7 @@ namespace Core.Movement.Controllers
         public Jumper(Rigidbody2D rigidbody)
         {
             _rigidbody = rigidbody;
+            Land();
         }
         
         public bool StartJump(float jumpForce)
@@ -22,30 +23,31 @@ namespace Core.Movement.Controllers
 
             IsJumping = true;
             _rigidbody.AddForce(Vector2.up * jumpForce);
-            
             return true;
         }
 
         public bool GetOnGround(Collision2D ground)
         {
-            if (ground.transform.CompareTag("Ground"))
-            {
-                IsJumping = false;
-                IsLanding = false;
-                return true;
-            }
-            return false;
+            if (!ground.transform.CompareTag("Ground")) return false;
+            Land();
+            return true;
         }
 
         public bool GetOffGround(Collision2D ground)
         {
-            if (ground.transform.CompareTag("Ground"))
-            {
-                return true;
-            }
-            return false;
+            return ground.transform.CompareTag("Ground");
         }
 
-        public void StartLanding() => IsLanding = true;
+        public void StartLanding()
+        {
+            IsLanding = true;
+            IsJumping = false;
+        }
+        
+        public void Land()
+        {
+            IsLanding = false;
+            IsJumping = false;
+        }
     }
 }

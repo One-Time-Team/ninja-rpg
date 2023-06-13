@@ -44,8 +44,11 @@ namespace NPC.Spawn
 
         public void Dispose()
         {
-            foreach(var entity in _entities)
+            foreach (var entity in _entities)
+            {
                 entity.Died -= RemoveEntity;
+                entity.Dispose();
+            }
             _entities.Clear();
         }
         
