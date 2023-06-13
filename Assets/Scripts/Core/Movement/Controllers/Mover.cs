@@ -18,7 +18,6 @@ namespace Core.Movement.Controllers
         }
 
         public abstract void MoveHorizontally(float movement);
-        public abstract void MoveVertically(float movement);
 
         public void SetDirection(Direction newDirection)
         {

@@ -75,5 +75,10 @@ namespace Core.Services.Updater
             
             LateUpdateCalled?.Invoke();
         }
+
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
     }
 }

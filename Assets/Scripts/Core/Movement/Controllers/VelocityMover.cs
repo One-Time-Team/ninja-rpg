@@ -1,5 +1,4 @@
-﻿using System;
-using Core.Enums;
+﻿using Core.Enums;
 using UnityEngine;
 
 namespace Core.Movement.Controllers
@@ -22,11 +21,6 @@ namespace Core.Movement.Controllers
             
             if (!IsMoving) return;
             SetDirection(direction > 0 ? Direction.Right : Direction.Left);
-        }
-
-        public override void MoveVertically(float direction)
-        {
-            throw new NotImplementedException();
         }
     }
 }

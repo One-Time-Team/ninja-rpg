@@ -7,7 +7,6 @@ using NPC.Behaviour;
 using UnityEngine;
 
 namespace Player{
-    
     public class PlayerEntityBehaviour : BaseEntityBehaviour
     {
         private const float LandingDetectionTime = 0.4f;
@@ -16,7 +15,7 @@ namespace Player{
         [SerializeField] private Collider2D _hitZone;
         
         private Jumper _jumper;
-        
+
         [field: SerializeField] public LayerMask Target { get; private set; }
         
         public bool IsAttackProcessing { get; private set; }
@@ -30,7 +29,7 @@ namespace Player{
             UpdateCameras();
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnCollisionStay2D(Collision2D other)
         {
             if (_jumper.GetOnGround(other))
                 CancelInvoke(nameof(StartLanding));
@@ -95,7 +94,8 @@ namespace Player{
         protected override void UpdateAnimations()
         {
             base.UpdateAnimations();
-            Animator.PlayAnimation(AnimationType.Land, _jumper.IsLanding);
+            if (!_jumper.IsJumping)
+                Animator.PlayAnimation(AnimationType.Land, _jumper.IsLanding);
         }
 
         private void EndJump()
@@ -103,9 +103,9 @@ namespace Player{
             Animator.ActionEnded -= EndJump;
             StartLanding();
         }
-        
+
         private void StartLanding() => _jumper.StartLanding();
-        
+
         private void OnAttackImpacted()
         {
             AttackImpacted?.Invoke();

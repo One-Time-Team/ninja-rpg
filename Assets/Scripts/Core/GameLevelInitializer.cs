@@ -17,14 +17,20 @@ namespace Core
 {
     public class GameLevelInitializer : MonoBehaviour
     {
+        [Header("Level")]
         [SerializeField] private WorldBoundaries _levelBorders;
-        [SerializeField] private PlayerEntityBehaviour _player;
+        [SerializeField] private ParallaxEffect _parallaxEffect;
         [SerializeField] private GameUIInputView _gameUIInputView;
+        [SerializeField] private List<Transform> _entitySpawnPoints;
+        [Header("Player")]
+        [SerializeField] private PlayerEntityBehaviour _player;
+        [SerializeField] private LayerMask _playerLayer;
+        [Header("Items")]
         [SerializeField] private ItemRarityStorage _itemRarityStorage;
         [SerializeField] private ItemsStorage _itemsStorage;
-        [SerializeField] private ParallaxEffect _parallaxEffect;
-        [SerializeField] private LayerMask _playerLayer;
-        [SerializeField] private Transform _entitySpawnPoint;
+        [Header("Pathfinding")]
+        [SerializeField] private AstarPath _astarPath;
+        [SerializeField] private float _scanUpdateTime;
 
         private ExternalDeviceInputReader _externalDeviceInputReader;
         private PlayerSystem _playerSystem;
@@ -48,6 +54,8 @@ namespace Core
             else
                 _projectUpdater = ProjectUpdater.Instance as ProjectUpdater;
             
+            InvokeRepeating(nameof(ScanAstar), 0f, _scanUpdateTime);
+
             _levelBorders.OnAwake();
             
             _externalDeviceInputReader = new ExternalDeviceInputReader();
@@ -71,21 +79,33 @@ namespace Core
             
             _entitiesSystem = new EntitiesSystem(_parallaxEffect);
             _parallaxEffect.Layers.Add(new ParallaxLayer(_entitiesSystem.Transform, 1));
+            _disposables.Add(_entitiesSystem);
+        }
+
+        private void Start()
+        {
+            foreach (var spawnPoint in _entitySpawnPoints)
+            {
+                _entitiesSystem.SpawnEntity(EntityId.Ronin, spawnPoint.position, _dropGenerator);
+            }
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 _projectUpdater.IsPaused = !_projectUpdater.IsPaused;
-            
-            if(Input.GetKeyDown(KeyCode.Q))
-                _entitiesSystem.SpawnEntity(EntityId.Ronin, _entitySpawnPoint.position, _dropGenerator);
         }
 
         private void OnDestroy()
         {
+            CancelInvoke(nameof(ScanAstar));
             foreach (var disposable in _disposables)
                 disposable.Dispose();
+        }
+
+        private void ScanAstar()
+        {
+           _astarPath.Scan();
         }
     }
 }

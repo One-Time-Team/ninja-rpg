@@ -28,8 +28,6 @@ namespace NPC.Behaviour
         public void TakeDamage(float damage) => DamageTaken?.Invoke(damage);
         
         public void MoveHorizontally(float direction) => Mover.MoveHorizontally(direction);
-        
-        public void MoveVertically(float direction) => Mover.MoveVertically(direction);
 
         public virtual void Die() => Animator.PlayAnimation(AnimationType.Death, true);
         
