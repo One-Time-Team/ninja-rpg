@@ -35,7 +35,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Start Level Camera
+  - m_From: StartLevelCamera
     m_To: PlayerRightCamera
     m_Blend:
       m_Style: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Start Level Camera
+  - m_From: StartLevelCamera
     m_To: PlayerLeftCamera
     m_Blend:
       m_Style: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: PlayerRightCamera
-    m_To: Start Level Camera
+    m_To: StartLevelCamera
     m_Blend:
       m_Style: 1
       m_Time: 1.4
@@ -69,7 +69,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: PlayerLeftCamera
-    m_To: Start Level Camera
+    m_To: StartLevelCamera
     m_Blend:
       m_Style: 1
       m_Time: 1.4
@@ -80,7 +80,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: PlayerRightCamera
-    m_To: End Level Camera
+    m_To: EndLevelCamera
     m_Blend:
       m_Style: 1
       m_Time: 1.7
@@ -91,7 +91,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: PlayerLeftCamera
-    m_To: End Level Camera
+    m_To: EndLevelCamera
     m_Blend:
       m_Style: 1
       m_Time: 1.7
@@ -101,7 +101,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: End Level Camera
+  - m_From: EndLevelCamera
     m_To: PlayerRightCamera
     m_Blend:
       m_Style: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: End Level Camera
+  - m_From: EndLevelCamera
     m_To: PlayerLeftCamera
     m_Blend:
       m_Style: 1
@@ -123,8 +123,8 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: Start Level Camera
-    m_To: End Level Camera
+  - m_From: StartLevelCamera
+    m_To: EndLevelCamera
     m_Blend:
       m_Style: 1
       m_Time: 7
@@ -134,11 +134,22 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: End Level Camera
-    m_To: Start Level Camera
+  - m_From: EndLevelCamera
+    m_To: StartLevelCamera
     m_Blend:
       m_Style: 1
       m_Time: 7
+      m_CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - m_From: OpeningLevelCamera
+    m_To: StartLevelCamera
+    m_Blend:
+      m_Style: 1
+      m_Time: 1
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

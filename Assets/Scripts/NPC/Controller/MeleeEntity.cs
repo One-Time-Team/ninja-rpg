@@ -55,6 +55,9 @@ namespace NPC.Controller
             _meleeEntityBehaviour.AttackSequenceEnded -= OnAttackEnded;
             ProjectUpdater.Instance.FixedUpdateCalled -= OnFixedUpdateCalled;
             _meleeEntityBehaviour.AttackImpacted -= OnAttack;
+            
+            if (_searchCoroutine != null)
+                ProjectUpdater.Instance.StopCoroutine(_searchCoroutine);
         }
         
         protected sealed override void VisualiseHP(float currentHP)

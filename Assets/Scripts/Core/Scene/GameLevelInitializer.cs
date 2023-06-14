@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Core.Parallax;
 using Core.Services.Updater;
 using Core.Tools;
 using InputReader;
-using Player;
-using UnityEngine;
-using ItemsSystem.Storages;
-using ItemsSystem.Data;
-using System.Linq;
-using Core.Parallax;
 using ItemsSystem;
+using ItemsSystem.Data;
+using ItemsSystem.Storages;
 using NPC.Enums;
 using NPC.Spawn;
+using Player;
+using UnityEngine;
 
-namespace Core
+namespace Core.Scene
 {
     public class GameLevelInitializer : MonoBehaviour
     {
+        [Header("Level Managing")]
+        [SerializeField] private GameObject _completeLevelUI;
+        [SerializeField] private GameObject _restartLevelUI;
+        [SerializeField] private float _loadNextLevelDelay;
+        [SerializeField] private float _restartLevelDelay;
         [Header("Level")]
         [SerializeField] private WorldBoundaries _levelBorders;
         [SerializeField] private ParallaxEffect _parallaxEffect;
@@ -53,6 +58,8 @@ namespace Core
             }
             else
                 _projectUpdater = ProjectUpdater.Instance as ProjectUpdater;
+
+            _projectUpdater.Initialize(_gameUIInputView.Joystick, _gameUIInputView.Buttons);
             
             InvokeRepeating(nameof(ScanAstar), 0f, _scanUpdateTime);
 
@@ -74,9 +81,8 @@ namespace Core
             _parallaxEffect.Layers.Add(new ParallaxLayer(_itemSystem.Transform, 1));
             _disposables.Add(_itemSystem);
             List<ItemDescriptor> itemDescriptors = _itemsStorage.ItemScriptables.Select(scriptable => scriptable.ItemDescriptor).ToList();
-            _dropGenerator = new DropGenerator(_player, itemDescriptors, _itemSystem);
-            _disposables.Add(_dropGenerator);
-            
+            _dropGenerator = new DropGenerator(itemDescriptors, _itemSystem);
+
             _entitiesSystem = new EntitiesSystem(_parallaxEffect);
             _parallaxEffect.Layers.Add(new ParallaxLayer(_entitiesSystem.Transform, 1));
             _disposables.Add(_entitiesSystem);
@@ -94,6 +100,11 @@ namespace Core
         {
             if (Input.GetKeyDown(KeyCode.Escape))
                 _projectUpdater.IsPaused = !_projectUpdater.IsPaused;
+
+            if (_entitiesSystem.AreEnemiesDead)
+                Invoke(nameof(LoadNextLevel), _loadNextLevelDelay);
+            else if (_playerSystem.IsPlayerDead)
+                Invoke(nameof(RestartLevel), _restartLevelDelay);
         }
 
         private void OnDestroy()
@@ -106,6 +117,16 @@ namespace Core
         private void ScanAstar()
         {
            _astarPath.Scan();
+        }
+
+        private void LoadNextLevel()
+        {
+            _completeLevelUI.SetActive(true);
+        }
+
+        private void RestartLevel()
+        {
+            _restartLevelUI.SetActive(true);
         }
     }
 }

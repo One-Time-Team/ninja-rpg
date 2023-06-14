@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ninja_Attack_0
+      name: MainNinja_Attack_2
       rect:
         serializedVersion: 2
         x: 0
@@ -138,7 +138,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_1
+      name: MainNinja_Attack_3
       rect:
         serializedVersion: 2
         x: 104
@@ -159,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_2
+      name: MainNinja_Attack_4
       rect:
         serializedVersion: 2
         x: 208
@@ -180,10 +180,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_3
+      name: MainNinja_Attack_5
       rect:
         serializedVersion: 2
-        x: 312
+        x: 310
         y: 0
         width: 104
         height: 77
@@ -201,7 +201,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_4
+      name: MainNinja_Attack_6
       rect:
         serializedVersion: 2
         x: 416
@@ -222,7 +222,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_5
+      name: MainNinja_Attack_7
       rect:
         serializedVersion: 2
         x: 520
@@ -243,7 +243,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_6
+      name: MainNinja_Attack_8
       rect:
         serializedVersion: 2
         x: 624
@@ -264,7 +264,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_7
+      name: MainNinja_Attack_9
       rect:
         serializedVersion: 2
         x: 728
@@ -285,7 +285,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Attack_8
+      name: MainNinja_Attack_10
       rect:
         serializedVersion: 2
         x: 832
@@ -316,15 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ninja_Attack_0: -1836238076
-      Ninja_Attack_1: 2114424171
-      Ninja_Attack_2: 1124574673
-      Ninja_Attack_3: -396986939
-      Ninja_Attack_4: -358376961
-      Ninja_Attack_5: 161269275
-      Ninja_Attack_6: 51774074
-      Ninja_Attack_7: 1629369861
-      Ninja_Attack_8: -1370454420
+      MainNinja_Attack_10: -1370454420
+      MainNinja_Attack_2: -1836238076
+      MainNinja_Attack_3: 2114424171
+      MainNinja_Attack_4: 1124574673
+      MainNinja_Attack_5: -396986939
+      MainNinja_Attack_6: -358376961
+      MainNinja_Attack_7: 161269275
+      MainNinja_Attack_8: 51774074
+      MainNinja_Attack_9: 1629369861
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -10,6 +10,7 @@ namespace Core.Services.Updater
         event Action FixedUpdateCalled;
         event Action LateUpdateCalled;
         Coroutine StartCoroutine(IEnumerator coroutine);
-        void StopCoroutine(Coroutine coroutine); 
+        void StopCoroutine(Coroutine coroutine);
+        void StopAllCoroutines();
     }
 }

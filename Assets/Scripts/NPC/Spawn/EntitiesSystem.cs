@@ -20,6 +20,7 @@ namespace NPC.Spawn
         private readonly IParallaxTargetMovement _parallaxTargetMovement;
         
         public Transform Transform { get; }
+        public bool AreEnemiesDead { get; private set; }
         
         
         public EntitiesSystem(IParallaxTargetMovement parallaxTargetMovement)
@@ -73,6 +74,9 @@ namespace NPC.Spawn
         {
             _entities.Remove(entity);
             entity.Died -= RemoveEntity;
+
+            if (_entities.Count == 0)
+                AreEnemiesDead = true;
         }
     }
 }

@@ -1,32 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Core.Services.Updater;
 using ItemsSystem.Data;
 using ItemsSystem.Enums;
-using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace ItemsSystem
 {
-    public class DropGenerator : IDisposable
+    public class DropGenerator
     {
-        private readonly PlayerEntityBehaviour _playerEntityBehaviour;
         private readonly List<ItemDescriptor> _itemDescriptors;
         private readonly ItemSystem _itemsSystem;
 
-        public DropGenerator(PlayerEntityBehaviour playerEntityBehaviour, List<ItemDescriptor> itemDescriptors, ItemSystem itemsSystem)
+        public DropGenerator(List<ItemDescriptor> itemDescriptors, ItemSystem itemsSystem)
         {
-            _playerEntityBehaviour = playerEntityBehaviour;
             _itemDescriptors = itemDescriptors;
             _itemsSystem = itemsSystem;
-            ProjectUpdater.Instance.UpdateCalled += OnUpdate;
-        }
-
-        public void Dispose()
-        {
-            ProjectUpdater.Instance.UpdateCalled -= OnUpdate;
         }
 
         public void DropRandomItem(Vector2 position)
@@ -49,12 +38,6 @@ namespace ItemsSystem
                 > 97 and <= 100 => ItemRarity.Legendary,
                 _ => ItemRarity.Trash
             };
-        }
-
-        private void OnUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.G))
-                DropRandomItem(_playerEntityBehaviour.transform.position);
         }
     }
 }

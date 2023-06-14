@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e24244f553647c0479912a5857eef8e3
+guid: 1780321cafcc6644e96b2d3f46e2f29c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ninja_Death_0
+      name: MainNinja_Jump_Idle
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f69b44d6982169e4fa9d047ada3762d3
-      internalID: -1337037692
+      spriteID: f32299aede6ffd44ab50a35f23da37cc
+      internalID: -1955824002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Death_1
+      name: MainNinja_Jump_0
       rect:
         serializedVersion: 2
         x: 104
@@ -152,17 +152,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71aabc3baeb3cb848adee60a4bd2bb18
-      internalID: -1272530411
+      spriteID: fe83def899c09ed42a2714e0fb600465
+      internalID: -222786641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Death_2
+      name: MainNinja_Jump_1
       rect:
         serializedVersion: 2
-        x: 197
+        x: 208
         y: 0
         width: 104
         height: 77
@@ -173,17 +173,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d58accedbafcb1547a595e5bea41475d
-      internalID: -1752882873
+      spriteID: a68a41af18813f146b0827198a2a80e9
+      internalID: 130245845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Death_3
+      name: MainNinja_Jump_2
       rect:
         serializedVersion: 2
-        x: 301
+        x: 312
         y: 0
         width: 104
         height: 77
@@ -194,17 +194,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11621636b3821de40a1ff82c5813bdf0
-      internalID: 1986195123
+      spriteID: 7b468f5f0f2ff6d4c8aa5fcc20b136c7
+      internalID: 153880021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Death_4
+      name: MainNinja_Jump_3
       rect:
         serializedVersion: 2
-        x: 405
+        x: 416
         y: 0
         width: 104
         height: 77
@@ -215,17 +215,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2efadf6ac2782354c99f6c42defd22e3
-      internalID: 890032439
+      spriteID: b5eac4e52e2c43d4f99b62d686e6c755
+      internalID: -1964433050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Death_5
+      name: MainNinja_Jump_4
       rect:
         serializedVersion: 2
-        x: 525
+        x: 520
         y: 0
         width: 104
         height: 77
@@ -236,17 +236,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 931901b622d4fa44d91251931baa0b03
-      internalID: 1046765695
+      spriteID: a60a1ee2deef04941b8e78e5ce74fdb3
+      internalID: 605449254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Death_6
+      name: MainNinja_Jump_5
       rect:
         serializedVersion: 2
-        x: 643
+        x: 624
         y: 0
         width: 104
         height: 77
@@ -257,29 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7b6fc05a3d44fe47a7fd564ea4aaab5
-      internalID: -149126741
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ninja_Death_7
-      rect:
-        serializedVersion: 2
-        x: 754
-        y: 0
-        width: 104
-        height: 77
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dc5cf513ac14ac4dbfc9eae3347b04c
-      internalID: -1066023188
+      spriteID: b7b53ea23ca19834faf6abcabc02a5ca
+      internalID: -57924404
       vertices: []
       indices: 
       edges: []
@@ -287,7 +266,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 1bc76474eba9f894094c535966b626ef
     internalID: 0
     vertices: []
     indices: 
@@ -295,14 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ninja_Death_0: -1337037692
-      Ninja_Death_1: -1272530411
-      Ninja_Death_2: -1752882873
-      Ninja_Death_3: 1986195123
-      Ninja_Death_4: 890032439
-      Ninja_Death_5: 1046765695
-      Ninja_Death_6: -149126741
-      Ninja_Death_7: -1066023188
+      MainNinja_Jump_0: -222786641
+      MainNinja_Jump_1: 130245845
+      MainNinja_Jump_2: 153880021
+      MainNinja_Jump_3: -1964433050
+      MainNinja_Jump_4: 605449254
+      MainNinja_Jump_5: -57924404
+      MainNinja_Jump_Idle: -1955824002
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

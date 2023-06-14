@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 1780321cafcc6644e96b2d3f46e2f29c
+guid: 8efff16dd4370af4e968c0ef107cf64b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,55 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ninja_Jump_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 104
-        height: 77
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f32299aede6ffd44ab50a35f23da37cc
-      internalID: -1955824002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ninja_Jump_1
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 0
-        width: 104
-        height: 77
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fe83def899c09ed42a2714e0fb600465
-      internalID: -222786641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ninja_Jump_2
+      name: PeasantNinja_Attack_4
       rect:
         serializedVersion: 2
         x: 208
         y: 0
         width: 104
-        height: 77
+        height: 76
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a68a41af18813f146b0827198a2a80e9
-      internalID: 130245845
+      spriteID: 625f4639430a83f4388083f3076d6210
+      internalID: 1053090733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Jump_3
+      name: PeasantNinja_Attack_5
       rect:
         serializedVersion: 2
         x: 312
         y: 0
         width: 104
-        height: 77
+        height: 76
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b468f5f0f2ff6d4c8aa5fcc20b136c7
-      internalID: 153880021
+      spriteID: b4d39fd48de10ae4ca536b155009b3be
+      internalID: 1976337758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Jump_4
+      name: PeasantNinja_Attack_6
       rect:
         serializedVersion: 2
         x: 416
         y: 0
         width: 104
-        height: 77
+        height: 76
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,41 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5eac4e52e2c43d4f99b62d686e6c755
-      internalID: -1964433050
+      spriteID: f6299d30bc9eceb4e925467b7c0f5c00
+      internalID: -496853607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_Jump_5
-      rect:
-        serializedVersion: 2
-        x: 520
-        y: 0
-        width: 104
-        height: 77
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a60a1ee2deef04941b8e78e5ce74fdb3
-      internalID: 605449254
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Ninja_Jump_6
+      name: PeasantNinja_Attack_8
       rect:
         serializedVersion: 2
         x: 624
         y: 0
         width: 104
-        height: 77
+        height: 76
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,8 +194,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7b53ea23ca19834faf6abcabc02a5ca
-      internalID: -57924404
+      spriteID: 371192e987266444e9da980c153af40b
+      internalID: 1846685320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Attack_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4004e9ba90290864eb820d7a279b9e20
+      internalID: -487848183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052c90d068d258e42b380e88da6663d1
+      internalID: 503086737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Attack_7
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fb4812d274e1c74589de9d1c6ce85de
+      internalID: 1314546089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Attack_9
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9574df434e144324e9da8db0986af09c
+      internalID: -177058338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Attack_10
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01988b87ce0743544b79ba21603643ff
+      internalID: 907487582
       vertices: []
       indices: 
       edges: []
@@ -266,7 +308,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1bc76474eba9f894094c535966b626ef
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -274,13 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ninja_Jump_0: -1955824002
-      Ninja_Jump_1: -222786641
-      Ninja_Jump_2: 130245845
-      Ninja_Jump_3: 153880021
-      Ninja_Jump_4: -1964433050
-      Ninja_Jump_5: 605449254
-      Ninja_Jump_6: -57924404
+      PeasantNinja_Attack_10: 907487582
+      PeasantNinja_Attack_2: -487848183
+      PeasantNinja_Attack_3: 503086737
+      PeasantNinja_Attack_4: 1053090733
+      PeasantNinja_Attack_5: 1976337758
+      PeasantNinja_Attack_6: -496853607
+      PeasantNinja_Attack_7: 1314546089
+      PeasantNinja_Attack_8: 1846685320
+      PeasantNinja_Attack_9: -177058338
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
