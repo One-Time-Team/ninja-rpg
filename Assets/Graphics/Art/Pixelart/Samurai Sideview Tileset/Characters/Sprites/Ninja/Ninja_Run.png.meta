@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -262,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ninja_Run_6: -291049535
-      Ninja_Run_4: 1583084968
-      Ninja_Run_1: -1754168530
       Ninja_Run_0: -167835199
-      Ninja_Run_5: 598762817
+      Ninja_Run_1: -1754168530
       Ninja_Run_2: 1100700739
       Ninja_Run_3: 1933030873
+      Ninja_Run_4: 1583084968
+      Ninja_Run_5: 598762817
+      Ninja_Run_6: -291049535
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
