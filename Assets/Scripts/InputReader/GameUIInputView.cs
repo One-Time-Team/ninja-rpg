@@ -1,17 +1,38 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace InputReader
 {
     public class GameUIInputView : MonoBehaviour, IEntityInputSource
     {
-        [SerializeField] private Joystick _joystick;
         [SerializeField] private Button _jumpButton;
         [SerializeField] private Button _attackButton;
+        
+        private List<Button> _buttons;
 
+        [field: SerializeField] public Joystick Joystick { get; private set; }
         [field: SerializeField] public Button InteractButton { get; private set; }
+        
+        public List<Button> Buttons
+        {
+            get
+            {
+                if (_buttons == null)
+                {
+                    _buttons = new List<Button>()
+                    {
+                        _jumpButton,
+                        _attackButton,
+                        InteractButton,
+                    };
+                }
 
-        public float HorizontalDirection => _joystick.Horizontal;
+                return _buttons;
+            }
+        }
+
+        public float HorizontalDirection => Joystick.Horizontal;
         public bool Jumped { get; private set; }
         public bool AttackStarted { get; private set; }
 

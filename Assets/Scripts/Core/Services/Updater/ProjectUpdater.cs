@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ namespace Core.Services.Updater
         public static IProjectUpdater Instance;
         
         private bool _isPaused;
-        private Button[] _buttons;
+        private List<Button> _buttons;
         private Joystick _joystick;
         
         public bool IsPaused
@@ -39,17 +40,19 @@ namespace Core.Services.Updater
 
         Coroutine IProjectUpdater.StartCoroutine(IEnumerator coroutine) => StartCoroutine(coroutine);
         void IProjectUpdater.StopCoroutine(Coroutine coroutine) => StopCoroutine(coroutine);
+        void IProjectUpdater.StopAllCoroutines() => StopAllCoroutines();
         
 
         private void Awake()
         {
             if (Instance == null)
+            {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+                
             else
                 Destroy(gameObject);
-            
-            _buttons = FindObjectsOfType<Button>();
-            _joystick = FindObjectOfType<FixedJoystick>();
         }
 
         private void Update()
@@ -78,7 +81,13 @@ namespace Core.Services.Updater
 
         private void OnDestroy()
         {
-            StopAllCoroutines();
+            Instance.StopAllCoroutines();
+        }
+
+        public void Initialize(Joystick joystick, List<Button> buttons)
+        {
+            _joystick = joystick;
+            _buttons = buttons;
         }
     }
 }

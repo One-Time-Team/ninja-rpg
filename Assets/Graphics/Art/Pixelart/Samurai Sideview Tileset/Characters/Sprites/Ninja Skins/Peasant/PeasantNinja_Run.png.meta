@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 1deb71fcb32b9fc4fa8952aeef40cb7f
+guid: 8f68c1a022ded614bbff09e9cfa3f33d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -51,7 +51,7 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ninja_NormalToAggressive_0
+      name: PeasantNinja_Run_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 104
-        height: 77
+        height: 76
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ed00fa4fda8364478c9d231e1b6825a
-      internalID: -120317382
+      spriteID: b93085a32fd68ed47b121ef2fc631d8e
+      internalID: -938661335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_NormalToAggressive_1
+      name: PeasantNinja_Run_1
       rect:
         serializedVersion: 2
         x: 104
         y: 0
         width: 104
-        height: 77
+        height: 76
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 899528a5e4dd4f245b935afeeaa2d368
-      internalID: -1431500959
+      spriteID: 312fc94db53199843bad206611c72c64
+      internalID: 1062099922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ninja_NormalToAggressive_2
+      name: PeasantNinja_Run_2
       rect:
         serializedVersion: 2
         x: 208
         y: 0
         width: 104
-        height: 77
+        height: 76
       alignment: 9
       pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,8 +173,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 186eed8722677e848b1de49806caeb84
-      internalID: -756449665
+      spriteID: 0380cfa5ff23f7846ab1d2035e47783b
+      internalID: 160915012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Run_3
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c328ee5b58bea9498b5cf54dc0d6657
+      internalID: -354394065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Run_4
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cf7aa767d537034bb8d5330ac828072
+      internalID: -1296514298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Run_5
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7b5f3759e31c24ba434c454e864f88
+      internalID: -596534000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PeasantNinja_Run_6
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 104
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 509c05bcfe00e2d4f80b0627d707e5da
+      internalID: -351492104
       vertices: []
       indices: 
       edges: []
@@ -182,7 +266,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 692fd8631a72aa04cb86e4b722a1c0c7
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -190,9 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Ninja_NormalToAggressive_0: -120317382
-      Ninja_NormalToAggressive_1: -1431500959
-      Ninja_NormalToAggressive_2: -756449665
+      PeasantNinja_Run_0: -938661335
+      PeasantNinja_Run_1: 1062099922
+      PeasantNinja_Run_2: 160915012
+      PeasantNinja_Run_3: -354394065
+      PeasantNinja_Run_4: -1296514298
+      PeasantNinja_Run_5: -596534000
+      PeasantNinja_Run_6: -351492104
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
