@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Parallax;
 using InputReader;
+using ItemsSystem;
 using StatsSystem;
 using StatsSystem.Storages;
 using UnityEngine;
@@ -14,9 +15,10 @@ namespace Player
         private readonly PlayerEntity _playerEntity;
         private readonly List<IDisposable> _disposables;
 
+        public Inventory Inventory { get; }
+
         public StatsController StatsController { get; }
 
-        
         public PlayerSystem(PlayerEntityBehaviour playerBehaviour, IParallaxTargetMovement parallaxTargetMovement, List<IEntityInputSource> inputSources)
         {
             _disposables = new List<IDisposable>();
@@ -28,6 +30,8 @@ namespace Player
 
             _playerEntity = new PlayerEntity(playerBehaviour, StatsController, parallaxTargetMovement, inputSources);
             _disposables.Add(_playerEntity);
+
+            Inventory = new Inventory(null, null);
         }
 
         public void Dispose()

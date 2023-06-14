@@ -1,20 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace InputReader
 {
-    public class GameUIInputView : MonoBehaviour, IEntityInputSource
+    public class GameUIInputView : MonoBehaviour, IEntityInputSource, IWindowsInputSource
     {
         [SerializeField] private Joystick _joystick;
         [SerializeField] private Button _jumpButton;
         [SerializeField] private Button _attackButton;
-
+        [SerializeField] private Button _inventoryButton;
         [field: SerializeField] public Button InteractButton { get; private set; }
 
         public float HorizontalDirection => _joystick.Horizontal;
         public bool IsJumping { get; private set; }
         public bool IsAttacking { get; private set; }
 
+        public event Action InventoryRequested;
 
         private void Awake()
         {

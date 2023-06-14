@@ -12,6 +12,7 @@ using Core.Parallax;
 using ItemsSystem;
 using NPC.Enums;
 using NPC.Spawn;
+using UI;
 
 namespace Core
 {
@@ -33,9 +34,10 @@ namespace Core
         private ItemSystem _itemSystem;
         private EntitySpawner _entitySpawner;
 
+        private UIContext _uiContext;
+
         private List<IDisposable> _disposables;
-        
-        
+
         private void Awake()
         {
             _disposables = new List<IDisposable>();
@@ -62,7 +64,7 @@ namespace Core
 
             ItemsFactory itemsFactory = new ItemsFactory(_playerSystem.StatsController);
             List<IRarityColor> rarityColors = _itemRarityStorage.RarityDescriptors.Cast<IRarityColor>().ToList();
-            _itemSystem = new ItemSystem(rarityColors, itemsFactory, _gameUIInputView.InteractButton, _playerLayer);
+            _itemSystem = new ItemSystem(rarityColors, itemsFactory, _gameUIInputView.InteractButton, _playerLayer, _playerSystem.Inventory);
             _parallaxEffect.Layers.Add(new ParallaxLayer(_itemSystem.Transform, 1));
             _disposables.Add(_itemSystem);
             List<ItemDescriptor> itemDescriptors = _itemsStorage.ItemScriptables.Select(scriptable => scriptable.ItemDescriptor).ToList();
@@ -71,6 +73,13 @@ namespace Core
             
             _entitySpawner = new EntitySpawner(_parallaxEffect);
             _parallaxEffect.Layers.Add(new ParallaxLayer(_entitySpawner.Transform, 1));
+
+            UIContext.Data data = new UIContext.Data(_playerSystem.Inventory, _itemRarityStorage.RarityDescriptors);
+            _uiContext = new UIContext(new List<IWindowsInputSource>
+            {
+                _gameUIInputView,
+                _externalDeviceInputReader
+            }, data);
         }
 
         private void Update()

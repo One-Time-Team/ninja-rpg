@@ -18,10 +18,12 @@ namespace ItemsSystem
         private Dictionary<SceneItem, Item> _itemsOnScene;
         private Button _interactButton;
         private LayerMask _playerLayer;
+        private readonly Inventory _inventory;
 
         public Transform Transform { get; }
 
-        public ItemSystem(List<IRarityColor> colors, ItemsFactory itemsFactory, Button interactButton, LayerMask playerLayer)
+        public ItemSystem(List<IRarityColor> colors, ItemsFactory itemsFactory, Button interactButton,
+            LayerMask playerLayer, Inventory inventory)
         {
             _sceneItem = Resources.Load<SceneItem>($"{nameof(ItemSystem)}/{nameof(SceneItem)}");
             _itemsOnScene = new Dictionary<SceneItem, Item>();
@@ -32,7 +34,8 @@ namespace ItemsSystem
             _itemsFactory = itemsFactory;
             _interactButton = interactButton;
             _playerLayer = playerLayer;
-            
+            _inventory = inventory;
+
             ProjectUpdater.Instance.UpdateCalled += OnUpdateButtonState;
         }
 
@@ -57,7 +60,13 @@ namespace ItemsSystem
         private void PickItem(SceneItem sceneItem)
         {
             Item item = _itemsOnScene[sceneItem];
+
+            if (_inventory.BackPackItems.Count >= Inventory.InventorySize)
+                return;
+
             Debug.Log($"Adding item {item.ItemDescriptor.Id} to inventory");
+            _inventory.AddBackPackItem(item);
+            
             _itemsOnScene.Remove(sceneItem);
             sceneItem.ItemClicked -= PickItem;
             Object.Destroy(sceneItem.gameObject);
@@ -65,13 +74,14 @@ namespace ItemsSystem
 
         private void OnUpdateButtonState()
         {
-            bool buttonState = false; 
+            bool buttonState = false;
             foreach (var sceneItem in _itemsOnScene.Keys)
             {
-                Collider2D player = Physics2D.OverlapCircle(sceneItem.Position, sceneItem.InteractionDistance, _playerLayer);
+                Collider2D player =
+                    Physics2D.OverlapCircle(sceneItem.Position, sceneItem.InteractionDistance, _playerLayer);
                 buttonState = buttonState || player;
             }
-            
+
             _interactButton.gameObject.SetActive(buttonState);
         }
     }

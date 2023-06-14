@@ -5,12 +5,13 @@ using UnityEngine.EventSystems;
 
 namespace InputReader
 {
-    public class ExternalDeviceInputReader : IEntityInputSource, IDisposable
+    public class ExternalDeviceInputReader : IEntityInputSource, IWindowsInputSource, IDisposable
     {
         public float HorizontalDirection => Input.GetAxisRaw("Horizontal");
         public bool IsJumping { get; private set; }
         public bool IsAttacking { get; private set; }
 
+        public event Action InventoryRequested;
 
         public ExternalDeviceInputReader()
         {
@@ -35,6 +36,11 @@ namespace InputReader
             if (!IsPointerOverUI() && Input.GetButtonDown("Fire1"))
             {
                 IsAttacking = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                InventoryRequested?.Invoke();
             }
         }
         
