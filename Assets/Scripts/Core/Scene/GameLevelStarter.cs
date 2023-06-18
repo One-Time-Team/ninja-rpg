@@ -21,6 +21,12 @@ namespace Core.Scene
             _projectUpdater = FindObjectOfType<ProjectUpdater>();
             _projectUpdater.enabled = false;
         }
+        
+        private void Update()
+        {
+            if (!ProjectUpdater.Instance.IsPaused && Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Escape))
+                StartLevel();
+        }
 
         private void StartLevel()
         {
@@ -31,10 +37,6 @@ namespace Core.Scene
             gameObject.SetActive(false);
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-                StartLevel();
-        }
+        
     }
 }

@@ -37,7 +37,7 @@ namespace Core.Scene
         [SerializeField] private AstarPath _astarPath;
         [SerializeField] private float _scanUpdateTime;
 
-        private ExternalDeviceInputReader _externalDeviceInputReader;
+        //private ExternalDeviceInputReader _externalDeviceInputReader;
         private PlayerSystem _playerSystem;
         private ProjectUpdater _projectUpdater;
         private DropGenerator _dropGenerator;
@@ -65,13 +65,13 @@ namespace Core.Scene
 
             _levelBorders.OnAwake();
             
-            _externalDeviceInputReader = new ExternalDeviceInputReader();
-            _disposables.Add(_externalDeviceInputReader);
+            // _externalDeviceInputReader = new ExternalDeviceInputReader();
+            // _disposables.Add(_externalDeviceInputReader);
             
             _playerSystem = new PlayerSystem(_player, _parallaxEffect, new List<IEntityInputSource>
             {
                 _gameUIInputView,
-                _externalDeviceInputReader,
+                // _externalDeviceInputReader,
             });
             _disposables.Add(_playerSystem);
 
